@@ -229,10 +229,100 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
+<h3 id="login-to-your-account"><a class="link" href="#login-to-your-account">Login to your account:</a></h3>
+<div class="paragraph">
+<p>SLAP will request for your login credentials (username and password) before allowing you to access it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-from-your-account-code-logout-code"><a class="link" href="#logout-from-your-account-code-logout-code">Logout from your account: <code>logout</code></a></h3>
+<div class="paragraph">
+<p>SLAP allows to log out from your account so that you can ensure confidentiality of your data.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Encryption is done automatically when SLAP is logged out or is exited.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="export-slap-code-coming-in-v2-0-code"><a class="link" href="#export-slap-code-coming-in-v2-0-code">Export SLAP <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Exports your SLAP into a file so that it can be transported across systems.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>Calendar</strong> : <code>calendar</code> <code>[Since v1.1]</code></p>
+</li>
+<li>
+<p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
+</li>
+<li>
+<p><strong>Switch</strong> : <code>switch FEATURE</code><br>
+e.g.<code>switch scheduler</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br>
+e.g.<code>select 2</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Logout</strong> : <code>logout</code></p>
+</li>
+<li>
+<p><strong>Login Status</strong> : <code>login-status</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -561,7 +651,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 14:13:38 UTC
+Last updated 2018-03-26 11:07:36 UTC
 </div>
 </div>
 </body>
