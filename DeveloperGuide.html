@@ -942,9 +942,6 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>The GUI portion of this feature will be a WebView of the Google Calendar web application. The user will have the option to either open their calendar as a new floating window by pressing the <code>F8</code> function key or by clicking <code>View &gt; Open Calendar</code> or as a scene within the main SLAP GUI by invoking the <code>calendar</code> command. In either case, the WebView will be instantiated as a new JavaFX scene and take advantage of Java&#8217;s build in WebView/WebEngine. This will allow the user to interact with the familiar Google Calendar web interface without any loss of functionality.</p>
 </div>
-<div class="paragraph">
-<p>TODO: INSERT FINALIZED DIAGRAM HERE</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-cli"><a class="link" href="#aspect-cli">Aspect: CLI</a></h5>
@@ -954,8 +951,10 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="paragraph">
 <p>A check will eventually be added to ensure that the user has already logged in before attempting to execute any of the afformentioned commands.</p>
 </div>
-<div class="paragraph">
-<p>TODO: INSERT FINALIZED DIAGRAM HERE</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/OauthModelDiagram.png" alt="OauthModelDiagram" width="800">
+</div>
 </div>
 </div>
 </div>
@@ -973,7 +972,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Pros: Minimal effort to implement as it is just a wrapper about the existing Google Calendar UI. Data is managed and secured by Google.</p>
 </li>
 <li>
-<p>Cons: Cannot customize the interfact without injecting customize styles. Requires complicated OAuth 2.0 authentication to work. Assumes that the user already has a Google account.</p>
+<p>Cons: Cannot customize the interface without injecting customize styles. Requires complicated OAuth 2.0 authentication to work. Assumes that the user already has a Google account.</p>
 </li>
 </ul>
 </div>
@@ -1041,7 +1040,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-addeventcommand-code-code-event-add-code"><a class="link" href="#aspect-implementation-of-code-addeventcommand-code-code-event-add-code">Aspect: Implementation of <code>AddEventCommand</code> &#8594; <code>event-add</code></a></h5>
+<h5 id="aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code"><a class="link" href="#aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code">Aspect: Implementation of <code>AddEventCommand</code> &#8594; <code>calendar-add</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1107,7 +1106,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementaiton-of-code-editeventcommand-code-code-event-edit-code"><a class="link" href="#aspect-implementaiton-of-code-editeventcommand-code-code-event-edit-code">Aspect: Implementaiton of <code>EditEventCommand</code> &#8594; <code>event-edit</code></a></h5>
+<h5 id="aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code"><a class="link" href="#aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code">Aspect: Implementation of <code>EditEventCommand</code> &#8594; <code>calendar-edit</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1140,7 +1139,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-deleteeventcommand-code-code-event-delete-code"><a class="link" href="#aspect-implementation-of-code-deleteeventcommand-code-code-event-delete-code">Aspect: Implementation of <code>DeleteEventCommand</code> &#8594; <code>event-delete</code></a></h5>
+<h5 id="aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code"><a class="link" href="#aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code">Aspect: Implementation of <code>DeleteEventCommand</code> &#8594; <code>calendar-delete</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2378,7 +2377,8 @@ optimal schedule for them.</p>
 <p><code>Minor Feature:</code> View Error Log in App
 * Allows the user to view the application&#8217;s error from within the application itself.
 * This is useful as it allows an advanced user to send the application developer a log of the events that occurred before an exception was encountered.
-* This feature is unobtrustive as the information contained within the log is essentially meaningless to everyone except for the developer. Additionally, the command is relatively hard to invoke accidentally, and thus has a low chance of being discovered. Additionally, this command only shows read-only information and thus cannot cause any harm to the system.</p>
+* This feature is unobtrustive as the information contained within the log is essentially meaningless to everyone except for the developer. Additionally, the command is relatively hard to invoke accidentally, and thus has a low chance of being discovered. Additionally, this command only shows read-only information and thus cannot cause any harm to the system.
+* This feature is useful so that if the user encounters an issue and wishes to help provide more information, they can relatively easily retrieve this information without much effort provided they are instructed on how to do so. It is unlikely that a user will encounter this feature by accident.</p>
 </div>
 <div class="paragraph">
 <p><strong>Chan Jin Jia</strong></p>
@@ -2835,7 +2835,7 @@ is needed to maintain the C-I-A security framework.</p>
 <p>User requests to view calendar events.</p>
 </li>
 <li>
-<p>AddressBook retrieves calendar events and updates the main window to show the events.</p>
+<p>AddressBook shows the user the relevant calendar events.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2872,7 +2872,7 @@ is needed to maintain the C-I-A security framework.</p>
 <p>User requests to view calendar events.</p>
 </li>
 <li>
-<p>AddressBook retrieves calendar events and updates the main window to show the events.</p>
+<p>AddressBook shows the user a list of their relevant calendar events.</p>
 </li>
 <li>
 <p>User selects calendar event to edit.</p>
@@ -2974,10 +2974,10 @@ is needed to maintain the C-I-A security framework.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User presses ‘View’ menu option and requests to see error log.</p>
+<p>User requests to see error log.</p>
 </li>
 <li>
-<p>AddressBook retrieves error log and displays it in a new window.</p>
+<p>AddressBook retrieves error log and displays it to the user.</p>
 </li>
 </ol>
 </div>
@@ -3389,7 +3389,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-28 05:41:27 UTC
+Last updated 2018-03-28 16:02:02 UTC
 </div>
 </div>
 </body>
