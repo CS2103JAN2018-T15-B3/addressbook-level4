@@ -44,13 +44,14 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#login-feature">3.1. Login Feature</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#google-calendar-integration">3.4. Google Calendar Integration</a></li>
-<li><a href="#map-view-feature">3.5. Map View feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#multi-user-feature">3.1. Multi-User Feature</a></li>
+<li><a href="#authentication">3.2. Authentication</a></li>
+<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#google-calendar-integration">3.5. Google Calendar Integration</a></li>
+<li><a href="#map-view-feature">3.6. Map View feature</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -562,6 +563,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <li>
 <p>can save the Address Book data in xml format and read it back.</p>
 </li>
+<li>
+<p>can save the User Database data in xml format and read it back.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -580,9 +584,21 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="login-feature"><a class="link" href="#login-feature">3.1. Login Feature</a></h3>
+<h3 id="multi-user-feature"><a class="link" href="#multi-user-feature">3.1. Multi-User Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To implement the multi-user feature, where each user has his/her own Address Book, we have added a <code>userDatabase</code> in Model
+to store all the available users in the application. The <code>userDatabase</code> is the same architectural level as the <code>addressBook</code>.
+A similar storing system used in <code>addressBook</code> is also used for <code>userDatabase</code> where the all the user data is stored in a
+single XML file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="authentication"><a class="link" href="#authentication">3.2. Authentication</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="sect4">
 <h5 id="user-login"><a class="link" href="#user-login">User Login</a></h5>
 <div class="paragraph">
@@ -591,7 +607,7 @@ from the application. When the user is logged out, the user commands are limited
 the user and the viewing of history is disabled. It serves the purpose of maintaining confidentiality of the data in the application.</p>
 </div>
 <div class="paragraph">
-<p>The <code>LoginCommand</code> is part of Logic component. However it makes use of <code>addressBook</code> to check for the match in
+<p>The <code>LoginCommand</code> is part of Logic component. However it makes use of <code>userDatabase</code> to check for the match in
 the username and password input. Below is a sequence diagram of how the feature works.</p>
 </div>
 <div class="imageblock">
@@ -636,9 +652,9 @@ of commands when the user is logged out.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -791,7 +807,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -928,18 +944,18 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="google-calendar-integration"><a class="link" href="#google-calendar-integration">3.4. Google Calendar Integration</a></h3>
+<h3 id="google-calendar-integration"><a class="link" href="#google-calendar-integration">3.5. Google Calendar Integration</a></h3>
 <div class="paragraph">
 <p>Command line and graphical integration with Google Calendar from within SLAP. This assumes that the user already uses Google Calendar to manage their events.</p>
 </div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.4.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.5.1. Proposed Implementation</a></h4>
 <div class="sect4">
 <h5 id="aspect-gui"><a class="link" href="#aspect-gui">Aspect: GUI</a></h5>
 <div class="paragraph">
@@ -962,7 +978,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-gui-2"><a class="link" href="#aspect-gui-2">Aspect: GUI</a></h5>
 <div class="ulist">
@@ -1177,9 +1193,9 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="map-view-feature"><a class="link" href="#map-view-feature">3.5. Map View feature</a></h3>
+<h3 id="map-view-feature"><a class="link" href="#map-view-feature">3.6. Map View feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The map view feature is implemented using <code>GMapsFX</code>, an imported library created by <a href="https://github.com/rterp/GMapsFX">rterp</a>. The library contains basic integration of Google Maps APIs into FMXL files. There feature supports the display and retrieval of <code>Person</code> addresses as a marker on Google Maps.</p>
 </div>
@@ -1197,7 +1213,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-gui-3"><a class="link" href="#aspect-gui-3">Aspect: GUI</a></h5>
 <div class="ulist">
@@ -1280,14 +1296,14 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1318,7 +1334,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3395,7 +3411,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 16:08:54 UTC
+Last updated 2018-04-04 18:53:27 UTC
 </div>
 </div>
 </body>

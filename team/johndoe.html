@@ -229,22 +229,6 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-to-your-account-code-login-code"><a class="link" href="#login-to-your-account-code-login-code">Login to your account: <code>login</code></a></h3>
-<div class="paragraph">
-<p>Logs in to your application
-Format: <code>login u/USERNAME p/PASSWORD</code></p>
-</div>
-<div class="paragraph">
-<p>Application will request for your login credentials (username and password) before allowing you to access it.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logout-from-your-account-code-logout-code"><a class="link" href="#logout-from-your-account-code-logout-code">Logout from your account: <code>logout</code></a></h3>
-<div class="paragraph">
-<p>Application allows to log out from your account so that you can ensure confidentiality of your data.</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encryption is done automatically when SLAP is logged out or is exited.</p>
@@ -325,6 +309,15 @@ e.g.<code>select 2</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Create New User</strong> : <code>create-user u/USERNAME p/PASSWORD</code></p>
+</li>
+<li>
+<p><strong>Delete Existing User</strong> : <code>delete-user u/USERNAME p/PASSWORD</code></p>
+</li>
+<li>
+<p><strong>Change Password of Existing User</strong> : <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code></p>
 </li>
 <li>
 <p><strong>Login</strong> : <code>login u/USERNAME p/PASSWORD</code></p>
@@ -661,7 +654,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 16:08:54 UTC
+Last updated 2018-04-04 18:53:27 UTC
 </div>
 </div>
 </body>
