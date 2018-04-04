@@ -40,7 +40,7 @@
 <li><a href="#deleting-a-person-code-delete-code">3.10. Deleting a person : <code>delete</code></a></li>
 <li><a href="#selecting-a-person-code-select-code">3.11. Selecting a person : <code>select</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
-<li><a href="#opening-a-calendar-code-calendar-code">3.13. Opening a calendar : <code>calendar</code></a></li>
+<li><a href="#opening-a-calendar-code-calendar-launch-code">3.13. Opening a calendar : <code>calendar-launch</code></a></li>
 <li><a href="#adding-and-event-to-the-calendar-code-calendar-add-code">3.14. Adding and event to the calendar : <code>calendar-add</code></a></li>
 <li><a href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">3.15. List upcoming events in the command line: <code>calendar-list</code></a></li>
 <li><a href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">3.16. Deleting an event from the calendar : <code>calendar-delete</code></a></li>
@@ -500,10 +500,10 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-a-calendar-code-calendar-code"><a class="link" href="#opening-a-calendar-code-calendar-code">3.13. Opening a calendar : <code>calendar</code></a></h3>
+<h3 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">3.13. Opening a calendar : <code>calendar-launch</code></a></h3>
 <div class="paragraph">
-<p>Opens a calendar in a webview. Will eventually have the option to be opened in the in application scene switcher.
-Format: <code>calendar</code></p>
+<p>Opens a calendar in a webview.
+Format: <code>calendar-launch</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -513,7 +513,11 @@ Format: <code>calendar</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The user can also open the calendar by pressing the <code>F8</code> function key, or by pressing <code>View &gt; Open Calendar</code></p>
+<p>The user can also open the calendar by pressing the <code>F8</code> function key, or by pressing <code>View &gt; Open Calendar</code>.</p>
+</div>
+<div class="paragraph">
+<p>The previous <code>calendar</code> command has been depricated since v1.4 in favour of the <code>switch calendar</code> command that properly opens
+the calendar in the build-in scene switcher.</p>
 </div>
 </td>
 </tr>
@@ -524,7 +528,7 @@ Format: <code>calendar</code></p>
 <h3 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">3.14. Adding and event to the calendar : <code>calendar-add</code></a></h3>
 <div class="paragraph">
 <p>Allows a user to add an event directly to their calendar.
-Format: <code>calendar-add en/&lt;eventname&gt; std/&lt;startdatetime&gt; etd/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
+Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -744,7 +748,13 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Calendar</strong> : <code>calendar</code> <code>[Since v1.1]</code></p>
+<p><strong>Calendar Launch</strong> : <code>calendar-launch</code> <code>[Since v1.1] [Updated v1.4]</code></p>
+</li>
+<li>
+<p><strong>Calendar List</strong> : <code>calendar-list</code> <code>[Since v1.2]</code></p>
+</li>
+<li>
+<p><strong>Calendar Add</strong> : <code>calendar-add</code> <code>[Since v1.3]</code></p>
 </li>
 <li>
 <p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
@@ -779,7 +789,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 13:22:54 UTC
+Last updated 2018-04-04 14:55:28 UTC
 </div>
 </div>
 </body>
