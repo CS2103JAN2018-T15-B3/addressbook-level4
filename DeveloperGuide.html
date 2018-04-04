@@ -615,6 +615,9 @@ status upon each command entry to effect the change on the UI. The sequence diag
 <p>When the user is not logged in, commands that manipulate data in the application will be disabled. To avoid editing
 every single command, the invalidity of the command is handled in <code>LogicManager</code>.</p>
 </div>
+<div class="paragraph">
+<p>TODO: Add in design considerations</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="user-logout"><a class="link" href="#user-logout">User Logout</a></h5>
@@ -2414,7 +2417,24 @@ route between addresses of the beneficiaries on the daily agenda to facilitate e
 <p><strong>Kaiser Tan</strong></p>
 </div>
 <div class="paragraph">
-<p><code>Major feature:</code> Export function with Secure Encryption</p>
+<p><code>Major feature:</code> User Login</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The application will support multiple users and each having their own addressbook.</p>
+</li>
+<li>
+<p>User can login and logout safely, preventing external users from accessing the SLAP without authorisation</p>
+</li>
+<li>
+<p>As a social worker, I want to secure my SLAP and only ensure that it is only accessible to me, hence a login function
+is needed to maintain the C-I-A security framework.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>Minor feature:</code> Export function with Secure Encryption</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2425,20 +2445,6 @@ storage file securely.</p>
 <li>
 <p>The social worker will have many sensitive data which needs to be kept confidential, hence a external user should not
 be able to see and read the storage file easily, especially when the user is logged out.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><code>Minor feature:</code> User Login</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>User can login and logout safely, preventing external users from accessing the SLAP without authorisation</p>
-</li>
-<li>
-<p>As a social worker, I want to secure my SLAP and only ensure that it is only accessible to me, hence a login function
-is needed to maintain the C-I-A security framework.</p>
 </li>
 </ul>
 </div>
@@ -3389,7 +3395,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-31 17:14:11 UTC
+Last updated 2018-04-04 05:23:58 UTC
 </div>
 </div>
 </body>

@@ -229,15 +229,19 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-to-your-account"><a class="link" href="#login-to-your-account">Login to your account:</a></h3>
+<h3 id="login-to-your-account-code-login-code"><a class="link" href="#login-to-your-account-code-login-code">Login to your account: <code>login</code></a></h3>
 <div class="paragraph">
-<p>SLAP will request for your login credentials (username and password) before allowing you to access it.</p>
+<p>Logs in to your application
+Format: <code>login u/USERNAME p/PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Application will request for your login credentials (username and password) before allowing you to access it.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="logout-from-your-account-code-logout-code"><a class="link" href="#logout-from-your-account-code-logout-code">Logout from your account: <code>logout</code></a></h3>
 <div class="paragraph">
-<p>SLAP allows to log out from your account so that you can ensure confidentiality of your data.</p>
+<p>Application allows to log out from your account so that you can ensure confidentiality of your data.</p>
 </div>
 </div>
 <div class="sect2">
@@ -317,10 +321,10 @@ e.g.<code>select 2</code></p>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Logout</strong> : <code>logout</code></p>
+<p><strong>Login</strong> : <code>login u/USERNAME p/PASSWORD</code></p>
 </li>
 <li>
-<p><strong>Login Status</strong> : <code>login-status</code></p>
+<p><strong>Logout</strong> : <code>logout</code></p>
 </li>
 </ul>
 </div>
@@ -651,7 +655,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-31 17:14:11 UTC
+Last updated 2018-04-04 05:23:58 UTC
 </div>
 </div>
 </body>
