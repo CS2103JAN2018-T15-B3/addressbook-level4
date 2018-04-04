@@ -49,14 +49,15 @@
 <li><a href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">3.19. Deleting an event from the calendar : <code>calendar-delete</code></a></li>
 <li><a href="#editing-an-event-in-the-calendar-code-calendar-edit-code">3.20. Editing an event in the calendar : <code>calendar-edit</code></a></li>
 <li><a href="#reauthenticate-google-oauth-code-reauthenticate-code">3.21. Reauthenticate Google Oauth : <code>reauthenticate</code></a></li>
-<li><a href="#opening-the-error-log-code-errorlog-code">3.22. Opening the Error Log : <code>errorlog</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.27. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.28. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#export-slap-code-coming-in-v2-0-code">3.29. Export SLAP <code>[coming in v2.0]</code></a></li>
+<li><a href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">3.22. List upcoming events in the command line: <code>show-schedule</code></a></li>
+<li><a href="#opening-the-error-log-code-errorlog-code">3.23. Opening the Error Log : <code>errorlog</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.24. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.25. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.26. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.28. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.29. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#export-slap-code-coming-in-v2-0-code">3.30. Export SLAP <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -603,43 +604,64 @@ the calendar in the build-in scene switcher.</p>
 <div class="sect2">
 <h3 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">3.17. Adding and event to the calendar : <code>calendar-add</code></a></h3>
 <div class="paragraph">
-<p>Allows a user to add an event directly to their calendar.
-Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
+<p>Allows a user to add an event directly to their calendar.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">3.18. List upcoming events in the command line: <code>calendar-list</code></a></h3>
 <div class="paragraph">
-<p>Allows a user to view their upcoming calendar events
-Format: <code>calendar-list</code></p>
+<p>Allows a user to view their upcoming calendar events.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-list</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">3.19. Deleting an event from the calendar : <code>calendar-delete</code></a></h3>
 <div class="paragraph">
-<p>Displays a list of upcoming events to the user and lets them select one to delete.
-Format: <code>calendar-delete</code></p>
+<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-delete INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-an-event-in-the-calendar-code-calendar-edit-code"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code">3.20. Editing an event in the calendar : <code>calendar-edit</code></a></h3>
 <div class="paragraph">
-<p>Displays a list of upcoming events to the user and lets them select one to edit.
-Format: <code>calendar-edit</code></p>
+<p>Displays a list of upcoming events to the user and lets them select one to edit.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-edit</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">3.21. Reauthenticate Google Oauth : <code>reauthenticate</code></a></h3>
 <div class="paragraph">
-<p>Allows a user to manually reauthenticate their Google Oauth credentials/permissions for SLAP
-Format: <code>reauthenticate</code></p>
+<p>Allows a user to manually reauthenticate their Google Oauth credentials/permissions for SLAP.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>reauthenticate</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">3.22. Opening the Error Log : <code>errorlog</code></a></h3>
+<h3 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">3.22. List upcoming events in the command line: <code>show-schedule</code></a></h3>
 <div class="paragraph">
-<p>Opens the error log in a new window.
-Format: <code>errorlog</code></p>
+<p>Allows a user to view their calendar events for the current day.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>show-schdeule</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">3.23. Opening the Error Log : <code>errorlog</code></a></h3>
+<div class="paragraph">
+<p>Opens the error log in a new window.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>errorlog</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -657,7 +679,7 @@ Format: <code>errorlog</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.24. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -702,7 +724,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.25. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -734,34 +756,34 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.26. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.27. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.28. Saving the data</a></h3>
 <div class="paragraph">
 <p>SLAP data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.28. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.29. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encryption is done automatically when SLAP is logged out or is exited.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export-slap-code-coming-in-v2-0-code"><a class="link" href="#export-slap-code-coming-in-v2-0-code">3.29. Export SLAP <code>[coming in v2.0]</code></a></h3>
+<h3 id="export-slap-code-coming-in-v2-0-code"><a class="link" href="#export-slap-code-coming-in-v2-0-code">3.30. Export SLAP <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Exports your SLAP into a file so that it can be transported across systems.</p>
 </div>
@@ -814,7 +836,13 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Calendar List</strong> : <code>calendar-list</code> <code>[Since v1.2]</code></p>
 </li>
 <li>
-<p><strong>Calendar Add</strong> : <code>calendar-add</code> <code>[Since v1.3]</code></p>
+<p><strong>Calendar Add</strong> : <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code> <code>[Since v1.3] [Updated v1.4]</code></p>
+</li>
+<li>
+<p><strong>Calendar Delete</strong> : <code>calendar-delete INDEX</code> <code>[Since v1.4]</code></p>
+</li>
+<li>
+<p><strong>Show Schedule</strong> : <code>show-schedule</code> <code>[Since v1.4]</code></p>
 </li>
 <li>
 <p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
@@ -858,7 +886,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 19:18:29 UTC
+Last updated 2018-04-04 20:05:13 UTC
 </div>
 </div>
 </body>
