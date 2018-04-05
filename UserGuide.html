@@ -591,13 +591,8 @@ Format: <code>navigate INDEX</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Command is still in the middle of development. Only static result will appear.</p>
-</div>
-<div class="paragraph">
-<p>Must be on <code>scheduler</code> view first for command to work, enter <code>switch scheduler</code> to do so.</p>
-</div>
-<div class="paragraph">
-<p><code>show-schedule</code> has to be called BEFORE <code>navigate</code> can work properly.</p>
+<p>Must be on <code>scheduler</code> view first for command to work, else nothing happens.
+<code>show-schedule</code> has to be called BEFORE <code>navigate</code> can work properly.</p>
 </div>
 </td>
 </tr>
@@ -608,10 +603,10 @@ Format: <code>navigate INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays direction between two different but adjacent events by specifiying <code>INDEX</code></p>
+<p>Displays direction between two different but adjacent events by specifying <code>INDEX</code></p>
 </li>
 <li>
-<p><code>INDEX</code> must be more then <code>1</code>, but less than total events for the day minus 2 or <code>LENGTH - 2</code>.</p>
+<p><code>INDEX</code> must be more then <code>1</code>, but less than total events for the day minus ONE or <code>NUM_OF_EVENTS - 1</code>.</p>
 </li>
 </ul>
 </div>
@@ -632,7 +627,7 @@ Retrieves events for specified day</p>
 </li>
 <li>
 <p><code>navigate 1</code><br>
-Displays dummy directions on the scheduler map</p>
+Displays directions between the first and the second event of the day.</p>
 </li>
 </ul>
 </div>
@@ -915,15 +910,19 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
 </li>
 <li>
-<p><strong>Switch</strong> : <code>switch FEATURE</code><br>
-e.g.<code>switch scheduler</code></p>
-</li>
-<li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
 e.g.<code>select 2</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Switch</strong> : <code>switch FEATURE</code><br>
+e.g.<code>switch scheduler</code></p>
+</li>
+<li>
+<p><strong>Navigate</strong> : <code>navigate INDEX</code><br>
+e.g.<code>navigate 2</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
@@ -953,7 +952,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 11:55:03 UTC
+Last updated 2018-04-05 22:51:31 UTC
 </div>
 </div>
 </body>
