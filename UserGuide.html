@@ -670,6 +670,9 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
 </div>
+<div class="paragraph">
+<p>Note: Dates can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">3.19. List upcoming events in the command line: <code>calendar-list</code></a></h3>
@@ -713,7 +716,10 @@ the calendar in the build-in scene switcher.</p>
 <p>Allows a user to view their calendar events for the current day.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>show-schdeule</code></p>
+<p>Format: <code>show-schdeule d/&lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Note: Date can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
 </div>
 </div>
 <div class="sect2">
@@ -903,7 +909,7 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Calendar Delete</strong> : <code>calendar-delete INDEX</code> <code>[Since v1.4]</code></p>
 </li>
 <li>
-<p><strong>Show Schedule</strong> : <code>show-schedule</code> <code>[Since v1.4]</code></p>
+<p><strong>Show Schedule</strong> : <code>show-schedule d/&lt;date&gt;</code> <code>[Since v1.4]</code></p>
 </li>
 <li>
 <p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
@@ -947,7 +953,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 04:36:12 UTC
+Last updated 2018-04-05 11:55:03 UTC
 </div>
 </div>
 </body>
