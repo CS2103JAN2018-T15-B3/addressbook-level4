@@ -48,7 +48,7 @@
 <li><a href="#adding-and-event-to-the-calendar-code-calendar-add-code">3.18. Adding and event to the calendar : <code>calendar-add</code></a></li>
 <li><a href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">3.19. List upcoming events in the command line: <code>calendar-list</code></a></li>
 <li><a href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">3.20. Deleting an event from the calendar : <code>calendar-delete</code></a></li>
-<li><a href="#editing-an-event-in-the-calendar-code-calendar-edit-code">3.21. Editing an event in the calendar : <code>calendar-edit</code></a></li>
+<li><a href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">3.21. Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></li>
 <li><a href="#reauthenticate-google-oauth-code-reauthenticate-code">3.22. Reauthenticate Google Oauth : <code>reauthenticate</code></a></li>
 <li><a href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">3.23. List upcoming events in the command line: <code>show-schedule</code></a></li>
 <li><a href="#opening-the-error-log-code-errorlog-code">3.24. Opening the Error Log : <code>errorlog</code></a></li>
@@ -652,6 +652,9 @@ Format: <code>calendar-launch</code></p>
 <p>The previous <code>calendar</code> command has been depricated since v1.4 in favour of the <code>switch calendar</code> command that properly opens
 the calendar in the build-in scene switcher.</p>
 </div>
+<div class="paragraph">
+<p>Logging in to the calendar interface DOES NOT perform the Oauth authentication process.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -665,8 +668,25 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Note: Dates can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+<p>Dates can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -677,6 +697,23 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>calendar-list</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">3.20. Deleting an event from the calendar : <code>calendar-delete</code></a></h3>
@@ -686,9 +723,26 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>calendar-delete INDEX</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-event-in-the-calendar-code-calendar-edit-code"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code">3.21. Editing an event in the calendar : <code>calendar-edit</code></a></h3>
+<h3 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">3.21. Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Displays a list of upcoming events to the user and lets them select one to edit.</p>
 </div>
@@ -704,6 +758,22 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>reauthenticate</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This command is used to manually reauthenticate the Oauth certificate. The SLAP app will launch the system default
+browser (i.e. not a WebView) and ask them to select the account that they wish to grant the SLAP app permission to
+edit. Failure authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">3.23. List upcoming events in the command line: <code>show-schedule</code></a></h3>
@@ -713,8 +783,25 @@ the calendar in the build-in scene switcher.</p>
 <div class="paragraph">
 <p>Format: <code>show-schdeule d/&lt;date&gt;</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Note: Date can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+<p>Date can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
+<div class="paragraph">
+<p>This command relies on Google Oauth to access the calendar. Whenever a Google Calendar-related command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -952,7 +1039,7 @@ e.g.<code>navigate 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 03:48:56 UTC
+Last updated 2018-04-06 05:20:55 UTC
 </div>
 </div>
 </body>
