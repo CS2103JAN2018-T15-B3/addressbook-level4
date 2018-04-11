@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Jason Manson-Hing - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Jason Manson-Hing - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-session-logger-and-planner-slap-for-social-workers"><a class="link" href="#project-session-logger-and-planner-slap-for-social-workers">PROJECT: Session Logger and Planner (SLAP) for Social Workers</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Sesion Logger and Planner (SLAP) application for Social Workers is a desktop client used to help
+social workers manager their day. By creating an easy to use command-line interface with graphical
+elements, social workers can quickly manage their contacts (e.g. beneficiaries) as well as their
+schedule (i.e. their calendar) from one central location efficiently via the command line.
+In addition to a fully-featured address book and calendar through the use of command line input,
+the client also allows for social workers to take session notes and attach them to their
+beneficiaries, as well as generate an optimal route of their daily schedule to help organize their day.</p>
+</div>
+<div class="paragraph">
+<p>On top of these features, a robust login system was implemented such that multiple users can securely
+switch between different accounts and have distinct address books, session reports, and calendars
+isolated from each other. Thus, not only does this allow for increased security, but it also
+allows for multiple users to use the same application on the same system, which has the added
+benefit of saving money as several people can share the same application on the same system
+without affecting the data of another person.</p>
+</div>
+<div class="paragraph">
+<p>The social worker is to interact with the application primarily through the command line. The GUI was created
+using JavaFX.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>Google Calendar integration using OAuth 2.0</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added commands that require OAuth2.0 to function properly: **</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>calendar-launch / switch calendar
+calendar-delete [args..]
+calendar-list
+reauthenticate
+show-schedule [args..]</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user interact directly with their Google Calendar via the command line. Users can view,
+add, and delete calendar events straight from the CLI, as well as view their calendar as a GUI by signing in to the
+included WebView built into the application.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because not only does it enable social workers to view
+their calendar straight within the application, but it also allows them to add/delete events through the CLI as well.
+This can potentially greatly increase their productivity as it allows them to view all of their important day-to-day
+information in one consolidated application and perform all major functions without leaving the application.</p>
+</li>
+<li>
+<p>Highlights: This feature powers the underlying workings of several commands, views, and UIs within the application.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The implementation of this new Manager Class was challenging as it required completely new logic and classes to be created to handle
+the API and authentication process.</p>
+</li>
+<li>
+<p>The <code>calendar-list</code> and <code>show-schedule d/DATE</code> commands store their most recently retrieved event location such that the same events list retrieved
+can be interacted with via the <code>calendar-delete</code> and <code>navigate</code> commands respectively.</p>
+</li>
+<li>
+<p>This feature supports multiple users through our custom log in feature. This was challenging to implement as it required
+a unique data store location that could be generated on the fly as new users were added.</p>
+</li>
+<li>
+<p>Natural language dates are supported when defining start and end times for the events.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Credits: <a href="https://developers.google.com/calendar/">Google Calendar API</a> for Handling OAuth 2.0 authentication and methods to operate directly on
+a user&#8217;s Google Calendar, <a href="http://natty.joestelmach.com/">Natty</a> for Natural Language Date Parsing</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor enhancement</strong>: Backend work on daily-scheduler. Having successfully connected the SLAP application with Google Calendar,
+I assisted my teammates minor enhancement of the nagiate command by creating the necessary backend logic and command classes for
+the <code>show-schedule d/DATE</code> command to work. This feature accepts a date in most formats (including natural language), and
+fetches the list of events that the user has scheduled for said date. Additionally, the command also generates the necessary
+hooks required for the <code>nagivate</code> command to function (i.e. generating a list of events for the particular day).</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added an command and menu option to display the current error log to the user. This was implemented
+in order to allow for users that encounter issues to have a more programmatic way of sending error log details without
+having to look around their computer to locate the actual error log file. This was an important feature to add as
+managing multiple contacts and events must be a seamless process, and so in the off chance that an error is encountered,
+it was essential to provide an easy way to generate the error log on demand to help simplify the troubleshooting process.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-T15-B3/main/blob/master/collated/functional/ifalluphill.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-T15-B3/main/blob/master/collated/test/ifalluphill.md">Test code</a> | <a href="https://github.com/CS2103JAN2018-T15-B3/main/blob/master/collated/test/ifalluphill-reused.md">Test code - Reused</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2</code> - <code>v1.4</code> (3 releases), co-managed release <code>v1.5rc</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the menu to include option to open standalone calendar instance as well as view the error log (Pull requests <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/1">#1</a>, <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/21">#21</a>)</p>
+</li>
+<li>
+<p>Set up issue labels, created milestones each week, wrote detailed issues every week, and ensured that housekeeping was performed weekly (i.e. closing issues and milestones, creating releases, etc.) in accordance to their deadlines</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>: Contributed several user stories to the Developer Guide <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/112">#112</a></p>
+</li>
+<li>
+<p>: Added 6 use cases to the Developer Guide <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/112">#112</a></p>
+</li>
+<li>
+<p>: Defined most of the NFRs for the Developer Guide <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/112">#112</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for team F09-B1 (examples: <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/88">#88</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/94">#94</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/72">#72</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/78">#78</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/75">#75</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/74">#74</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/73">#73</a> <a href="https://github.com/CS2103JAN2018-F09-B1/main/issues/67">#67</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated a third party library <a href="http://natty.joestelmach.com/">Natty</a> to the project for natural langauge date parsing (<a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/58">#58</a>)</p>
+</li>
+<li>
+<p>Integrated a Google OAuth 2.0 and <a href="https://developers.google.com/calendar/">Google Calendar APIs</a> to the project for to enable seamless command line interaction with Google Calendar (<a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/46">#46</a>)</p>
+</li>
+<li>
+<p>Set up TravisCI and Coveralls for the team</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>{you can add/remove categories in the list above}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">Opening a calendar : <code>calendar-launch</code></a></h3>
+<div class="paragraph">
+<p>Opens a calendar in a webview.
+Format: <code>calendar-launch</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The user can also open the calendar by pressing the <code>F8</code> function key, or by pressing <code>View &gt; Open Calendar</code>.</p>
+</div>
+<div class="paragraph">
+<p>The previous <code>calendar</code> command has been depricated since v1.4 in favour of the <code>switch calendar</code> command that properly opens
+the calendar in the build-in scene switcher.</p>
+</div>
+<div class="paragraph">
+<p>Logging in to the calendar interface DOES NOT perform the Oauth authentication process.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">Adding and event to the calendar : <code>calendar-add</code></a></h3>
+<div class="paragraph">
+<p>Allows a user to add an event directly to their calendar.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Start/End times can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
+<div class="paragraph">
+<p>The expected behaviour is such that if no time is provided with the date, the program will assume that the the desired
+time is the current time. For example, if current time is 12am and the user does not specify a start or end time for the
+two dates that they provide, then the application will use 12am as both the start and end time for their input dates.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, if no date is provided with the time, the program will assume that the desired day was the current day.
+For example, if the current time is 4am, and the start date is 12am and the end date is 6am, the created event will
+start on the current day at 12am and end at 6am on the same day.</p>
+</div>
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">List upcoming events in the command line: <code>calendar-list</code></a></h3>
+<div class="paragraph">
+<p>Allows a user to view their upcoming calendar events.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-list</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">Deleting an event from the calendar : <code>calendar-delete</code></a></h3>
+<div class="paragraph">
+<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-delete INDEX</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>Displays a list of upcoming events to the user and lets them select one to edit.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>calendar-edit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">Reauthenticate Google Oauth : <code>reauthenticate</code></a></h3>
+<div class="paragraph">
+<p>Allows a user to manually reauthenticate their Google Oauth credentials/permissions for SLAP.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>reauthenticate</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This command is used to manually reauthenticate the Oauth certificate. The SLAP app will launch the system default
+browser (i.e. not a WebView) and ask them to select the account that they wish to grant the SLAP app permission to
+edit. Failure to authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">List upcoming events in the command line: <code>show-schedule</code></a></h3>
+<div class="paragraph">
+<p>Allows a user to view their calendar events for the current day.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>show-schdeule d/&lt;date&gt;</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Date can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
+<div class="paragraph">
+<p>This command relies on Google Oauth to access the calendar. Whenever a Google Calendar-related command is executed, the
+Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
+app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">Opening the Error Log : <code>errorlog</code></a></h3>
+<div class="paragraph">
+<p>Opens the error log in a new window.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>errorlog</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The user can also open the error log by pressing <code>View &gt; Show Error Log</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="google-calendar-integration"><a class="link" href="#google-calendar-integration">Google Calendar Integration</a></h3>
+<div class="paragraph">
+<p>Command line and graphical integration with Google Calendar from within SLAP. This assumes that the user already uses Google Calendar to manage their events.</p>
+</div>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<div class="sect4">
+<h5 id="aspect-gui"><a class="link" href="#aspect-gui">Aspect: GUI</a></h5>
+<div class="paragraph">
+<p>The GUI portion of this feature will be a WebView of the Google Calendar web application. The user will have the option to either open their calendar as a new floating window by pressing the <code>F8</code> function key or by clicking <code>View &gt; Open Calendar</code> or as a scene within the main SLAP GUI by invoking the <code>calendar</code> command. In either case, the WebView will be instantiated as a new JavaFX scene and take advantage of Java&#8217;s build in WebView/WebEngine. This will allow the user to interact with the familiar Google Calendar web interface without any loss of functionality.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-cli"><a class="link" href="#aspect-cli">Aspect: CLI</a></h5>
+<div class="paragraph">
+<p>The CLI portion of this feature will rely on Google&#8217;s Calendar API that uses the OAuth 2.0 protocol to allow an application (such as SLAP) to directly read/write to a user&#8217;s calendar, provided that they have given them access to the calendar. Once a user has authorized the application to read/write to their calendar, they will gain access to the the following commands: <code>event-add</code>, <code>event-delete</code>, and <code>event-edit</code>. The Oauth authentication process will be entirely handled by Google with the only requirement being that the user must log in to their calendar using the GUI interface.</p>
+</div>
+<div class="paragraph">
+<p>A check will eventually be added to ensure that the user has already logged in before attempting to execute any of the afformentioned commands.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OauthModelDiagram.png" alt="OauthModelDiagram" width="800">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-gui-2"><a class="link" href="#aspect-gui-2">Aspect: GUI</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Native Google Calendar WebView</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Minimal effort to implement as it is just a wrapper about the existing Google Calendar UI. Data is managed and secured by Google.</p>
+</li>
+<li>
+<p>Cons: Cannot customize the interface without injecting customize styles. Requires complicated OAuth 2.0 authentication to work. Assumes that the user already has a Google account.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can more easily create a custom UI and not rely on Google Calendar.</p>
+</li>
+<li>
+<p>Cons: Documentation does not explain how to interface with the UI / Storage. Optimal if used with Google Calendar anyway. In the absense of using Google Calendar, it would require a custom local storage layer for persistant data.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3: </strong> <a href="http://jfxtras.org/">JFXtras</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple adgenda view with relatively simple API to understand.</p>
+</li>
+<li>
+<p>Cons: Not as feature rich as the other options and would require a custom local storage layer to have persistant data.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-access"><a class="link" href="#aspect-data-access">Aspect: Data Access</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use OAuth</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can take advantage of Google&#8217;s first-party Calendar APIs for seamless CLI data manipulation.</p>
+</li>
+<li>
+<p>Cons: Extremely complicated to configure and set up.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Require the user to export their existing Google Calendar and import it into the application. New events added to the SLAP calendar would not appear in their Google Calendar.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require complex authentication and is thus easier to implement. Solution works offline.</p>
+</li>
+<li>
+<p>Cons: Requires additional local storage implementations and calendar events are no longer synced to the cloud.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code"><a class="link" href="#aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code">Aspect: Implementation of <code>AddEventCommand</code> &#8594; <code>calendar-add</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use Google&#8217;s Calendar API</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: First-party direct access to Google Calendar data.</p>
+</li>
+<li>
+<p>Cons: Requires the user to authenticate our application before this feature works correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Use URL Params</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Does not require Oauth and is therefore easier to implement.</p>
+</li>
+<li>
+<p>Cons: Requires the user to confirm the event addition through a GUI action, thus not allowing for a true CLI-only experience.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code"><a class="link" href="#aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code">Aspect: Implementation of <code>ViewEventsCommand</code> &#8594; <code>calendar-launch</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Open a Webview (either as a new window or within the main application gui)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Low development cost as the webview exists already.</p>
+</li>
+<li>
+<p>Cons: Requires an internet connection. Has no CLI-friendly output.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> List events in the CLI</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: CLI-only friendly. Does not require a webview and thus makes the application less resource intensive.</p>
+</li>
+<li>
+<p>Cons: Higher development cost as it becomes necessary to format the response from Google&#8217;s APIs (and write a new set of logic to parse and format the data.)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code"><a class="link" href="#aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code">Aspect: Implementation of <code>EditEventCommand</code> &#8594; <code>calendar-edit</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use Google&#8217;s Calendar API</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: First-party direct access to Google Calendar data.</p>
+</li>
+<li>
+<p>Cons: Requires the user to authenticate our application before this feature works correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Only allow for graphical editing</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No implementation required as everything happens through the spawned webview.</p>
+</li>
+<li>
+<p>Cons: No CLI-friendly output. More resource intensive on the end-user&#8217;s system.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code"><a class="link" href="#aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code">Aspect: Implementation of <code>DeleteEventCommand</code> &#8594; <code>calendar-delete</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use Google&#8217;s Calendar API</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: First-party direct access to Google Calendar data.</p>
+</li>
+<li>
+<p>Cons: Requires the user to authenticate our application before this feature works correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: </strong> Only allow for graphical deleting</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No implementation required as everything happens through the spawned webview.</p>
+</li>
+<li>
+<p>Cons: No CLI-friendly output. More resource intensive on the end-user&#8217;s system.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-11 21:25:13 UTC
+</div>
+</div>
+</body>
+</html>

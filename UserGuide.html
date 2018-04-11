@@ -666,7 +666,7 @@ the calendar in the build-in scene switcher.</p>
 <p>Allows a user to add an event directly to their calendar.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code></p>
+<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt;</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -676,13 +676,23 @@ the calendar in the build-in scene switcher.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Dates can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+<p>Start/End times can be written in natural language (e.g. Today, This Friday, May 4, etc.)</p>
+</div>
+<div class="paragraph">
+<p>The expected behaviour is such that if no time is provided with the date, the program will assume that the the desired
+time is the current time. For example, if current time is 12am and the user does not specify a start or end time for the
+two dates that they provide, then the application will use 12am as both the start and end time for their input dates.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, if no date is provided with the time, the program will assume that the desired day was the current day.
+For example, if the current time is 4am, and the start date is 12am and the end date is 6am, the created event will
+start on the current day at 12am and end at 6am on the same day.</p>
 </div>
 <div class="paragraph">
 <p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </div>
 </td>
 </tr>
@@ -708,7 +718,7 @@ to grant the SLAP app permission to edit. Failure authenticate will cause the pr
 <p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </div>
 </td>
 </tr>
@@ -734,7 +744,7 @@ to grant the SLAP app permission to edit. Failure authenticate will cause the pr
 <p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </div>
 </td>
 </tr>
@@ -768,7 +778,7 @@ to grant the SLAP app permission to edit. Failure authenticate will cause the pr
 <div class="paragraph">
 <p>This command is used to manually reauthenticate the Oauth certificate. The SLAP app will launch the system default
 browser (i.e. not a WebView) and ask them to select the account that they wish to grant the SLAP app permission to
-edit. Failure authenticate will cause the program to freeze and crash.</p>
+edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </div>
 </td>
 </tr>
@@ -797,7 +807,7 @@ edit. Failure authenticate will cause the program to freeze and crash.</p>
 <p>This command relies on Google Oauth to access the calendar. Whenever a Google Calendar-related command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </div>
 </td>
 </tr>
@@ -1039,7 +1049,7 @@ e.g.<code>navigate 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 18:31:06 UTC
+Last updated 2018-04-11 21:25:13 UTC
 </div>
 </div>
 </body>

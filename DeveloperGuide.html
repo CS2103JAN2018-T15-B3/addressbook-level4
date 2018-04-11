@@ -1092,7 +1092,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-vieweventscommand-code-code-calendar-code"><a class="link" href="#aspect-implementation-of-code-vieweventscommand-code-code-calendar-code">Aspect: Implementation of <code>ViewEventsCommand</code> &#8594; <code>calendar</code></a></h5>
+<h5 id="aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code"><a class="link" href="#aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code">Aspect: Implementation of <code>ViewEventsCommand</code> &#8594; <code>calendar-launch</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2381,10 +2381,10 @@ up in the morning to take her to the lawyer’s office to file for a divorce fro
 </div>
 <div class="paragraph">
 <p><code>Major Feature:</code> Calendar Integration
-* Functional calendar within the application with add/view/delete/edit functionality.
+* Functional calendar within the application with add/view/delete functionality.
 * This is useful for social workers to keep track of all of the things that they have to do now and in the future.
 This calendar will be seperate from their personal calendar so as to keep business and personal information seperate.
-Additionally, this calendar will integrat with the daily scheduler function to help optimize their time in a day.</p>
+Additionally, this calendar will integrate with the daily scheduler function to help optimize their time in a day.</p>
 </div>
 <div class="paragraph">
 <p><code>Minor Feature:</code> Daily Scheduler (Events)
@@ -2989,6 +2989,43 @@ be able to see and read the storage file easily, especially when the user is log
 </li>
 </ul>
 </div>
+<h3 id="use-case-view-daily-schedule-events" class="discrete">Use case: View Daily Schedule Events</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to view events scheduled for a particular day.</p>
+</li>
+<li>
+<p>AddressBook shows the user the relevant calendar events.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. There are no calendar events.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. AddressBook notifies user that there are no events.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-show-error-log" class="discrete">Use case: Show Error Log</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -3196,7 +3233,7 @@ be able to see and read the storage file easily, especially when the user is log
 <p>Should not be graphically intensive for maximum compatibility.</p>
 </li>
 <li>
-<p>Should be backward compatible with previous versions of AddressBook.</p>
+<p>Should be backward compatible with previous versions of SLAP app.</p>
 </li>
 <li>
 <p>Should have all features and commands documented.</p>
@@ -3411,7 +3448,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-11 18:31:06 UTC
+Last updated 2018-04-11 21:25:13 UTC
 </div>
 </div>
 </body>
