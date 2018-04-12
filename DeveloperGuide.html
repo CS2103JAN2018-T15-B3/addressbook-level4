@@ -586,20 +586,93 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="sect2">
 <h3 id="multi-user-feature"><a class="link" href="#multi-user-feature">3.1. Multi-User Feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagramUD.png" alt="ModelClassDiagramUD" width="800">
+</div>
+<div class="title">Figure 11. Structure of the Model Component (UserDatabase Emphasis)</div>
+</div>
 <div class="paragraph">
 <p>To implement the multi-user feature, where each user has his/her own Address Book, we have added a <code>userDatabase</code> in Model
 to store all the available users in the application. The <code>userDatabase</code> is the same architectural level as the <code>addressBook</code>.
 A similar storing system used in <code>addressBook</code> is also used for <code>userDatabase</code> where the all the user data is stored in a
 single XML file.</p>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-for-database"><a class="link" href="#design-considerations-for-database">3.1.1. Design Considerations for Database</a></h4>
+<div class="paragraph">
+<p>A big design consideration is the architecture in implementing the retrieval and storage of multiple users.</p>
+</div>
+<div class="paragraph">
+<p><strong>A Possible Design</strong><br>
+A possible design was to store users and persons under the same data folder which means encapsulating AddressBook
+in a User. In the XML data storage, the Addressbook will be an element of a User; the User Database will then be the root.<br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;userdatabase&gt;
+    &lt;user&gt;
+        &lt;username&gt; user &lt;/username&gt;
+        &lt;password&gt; pass &lt;/password&gt;
+        &lt;addressbook&gt;
+            &lt;persons&gt;
+                &lt;name&gt;John Doe&lt;/name&gt;
+                &lt;phone&gt;98765432&lt;/phone&gt;
+                &lt;email&gt;johnd@example.com&lt;/email&gt;
+                &lt;address&gt;311, Clementi Ave 2, #02-25&lt;/address&gt;
+                &lt;sessionlogs&gt;&lt;/sessionlogs&gt;
+                &lt;tags&gt;ADHD&lt;/tags&gt;
+            &lt;/persons&gt;
+        &lt;/addressbook&gt;
+    &lt;/user&gt;
+&lt;/userdatabase&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, this may over-complicate and over populate the data storage file very fast
+which can grow quite large with many users. Transportation of the data file may be an issue if the file size becomes too big.</p>
+</div>
+<div class="paragraph">
+<p><strong>Current Implementation</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StorageClassDiagramUD.png" alt="StorageClassDiagramUD" width="800">
+</div>
+<div class="title">Figure 12. Structure of the Storage Component (UserDatabase Emphasis)</div>
+</div>
+<div class="paragraph">
+<p>Currently, the User Database mimics the AddressBook classes and instances in the Model and Storage Components.</p>
+</div>
+<div class="paragraph">
+<p>In terms of storage, the User Database of all users is now collectively stored in one XML data file. (eg. users.xml).
+The addressbook of each user is now stored in separate XML files. Each addressbook data file is identified in the following
+format:</p>
+</div>
+<div class="paragraph">
+<p><code>addressbook-[USERNAME].xml</code> where [USERNAME] refers to the username of the user</p>
+</div>
+<div class="paragraph">
+<p>While this can be argued to be bad as there is strong coupling between the user and the addressbook data file, such is
+fixed as in the absence of the addressbook data file, a sample data file will be created.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-user"><a class="link" href="#deleting-user">3.1.2. Deleting User</a></h4>
+<div class="paragraph">
+<p>One thing to highlight about the deleting of user, it also deletes the AddressBook XML data file, hence it cannot be
+retrieved again. It also prevents users from accessing the file again by creating a user with the same username as the one
+being deleted.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="authentication"><a class="link" href="#authentication">3.2. Authentication</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
 <div class="sect4">
 <h5 id="user-login"><a class="link" href="#user-login">User Login</a></h5>
 <div class="paragraph">
@@ -615,7 +688,7 @@ the username and password input. Below is a sequence diagram of how the feature 
 <div class="content">
 <img src="images/LoginFeatureLogicModelComponent.png" alt="LoginFeatureLogicModelComponent" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for Login Command (Logic Component)</div>
+<div class="title">Figure 13. Sequence Diagram for Login Command (Logic Component)</div>
 </div>
 <div class="paragraph">
 <p>The Login feature involves the UI component as well as we need to know when to hide and show certain panels depending on
@@ -626,14 +699,11 @@ status upon each command entry to effect the change on the UI. The sequence diag
 <div class="content">
 <img src="images/LoginFeatureUIComponent.png" alt="LoginFeatureUIComponent" width="800">
 </div>
-<div class="title">Figure 12. Sequence Diagram for Login Command (UI Component)</div>
+<div class="title">Figure 14. Sequence Diagram for Login Command (UI Component)</div>
 </div>
 <div class="paragraph">
 <p>When the user is not logged in, commands that manipulate data in the application will be disabled. To avoid editing
 every single command, the invalidity of the command is handled in <code>LogicManager</code>.</p>
-</div>
-<div class="paragraph">
-<p>TODO: Add in design considerations</p>
 </div>
 </div>
 <div class="sect4">
@@ -650,12 +720,53 @@ of commands when the user is logged out.</p>
 <p>Similarly, some of the UI panels will be hidden when the user logs out.</p>
 </div>
 </div>
+<div class="sect4">
+<h5 id="user-login-status"><a class="link" href="#user-login-status">User Login Status</a></h5>
+<div class="paragraph">
+<p>To identify the login status of the application and know its the correct user, a login status bar on
+the top of the window has been implemented. Its shows the status and the user that is logged in.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoginStatusBarLoggedOut.png" alt="LoginStatusBarLoggedOut" width="800">
+</div>
+<div class="title">Figure 15. Login Status Bar (Logged Out)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoginStatusBarLoggedIn.png" alt="LoginStatusBarLoggedIn" width="800">
+</div>
+<div class="title">Figure 16. Login Status Bar (Logged In)</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-enhancements"><a class="link" href="#possible-enhancements">3.2.2. Possible enhancements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login UI Box can be implemented before launching the main window</p>
+</li>
+<li>
+<p>Encryption of user file [coming in v2.0]</p>
+</li>
+<li>
+<p>Salting of passwords so that it is not deterministic when hashing/encrypting</p>
+</li>
+<li>
+<p>2-Factor Authentication for login</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -947,7 +1058,8 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>Data encryption can be implemented a few ways, however with knowledge of the current architecture, the easiest way to
+TODO: ADD details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1196,7 +1308,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect2">
 <h3 id="map-components"><a class="link" href="#map-components">3.6. Map Components</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The map view feature is implemented using <code>GMapsFX</code>, an imported library created by <a href="https://github.com/rterp/GMapsFX">rterp</a>. The library contains basic integration of Google Maps APIs into FMXL files.
 The feature supports the display and retrieval of addresses as a marker and of directions on the various Google Map components implemented across the application. There are two main instances of Map: in <code>Details</code> Feature and <code>Daily Scheduler</code> Feature.</p>
@@ -1303,7 +1415,7 @@ The feature supports the display and retrieval of addresses as a marker and of d
 <div class="sect2">
 <h3 id="daily-scheduler"><a class="link" href="#daily-scheduler">3.7. Daily Scheduler</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Feature includes a list of scheduled events for the specified day in addition to the aforementioned maps implemented using <code>GMapsFX</code>, an imported library created by <a href="https://github.com/rterp/GMapsFX">rterp</a>.</p>
 </div>
@@ -1432,7 +1544,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 13. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2485,23 +2597,26 @@ to remind social worker of previous sessions with the beneficiary.</p>
 <p>User can login and logout safely, preventing external users from accessing the SLAP without authorisation</p>
 </li>
 <li>
-<p>As a social worker, I want to secure my SLAP and only ensure that it is only accessible to me, hence a login function
+<p>As a social worker, he/she should be able to secure SLAP and only ensure that it is only accessible to him/her, hence a login function
 is needed to maintain the C-I-A security framework.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><code>Minor feature:</code> Export function with Secure Encryption</p>
+<p><code>Minor feature:</code> Adding Session Reports/Logs</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The storage file of our application will always be encrypted when logged out. User can also export and transfer the
-storage file securely.</p>
+<p>This feature allows the social worker to add logs to the SLAP.</p>
 </li>
 <li>
-<p>The social worker will have many sensitive data which needs to be kept confidential, hence a external user should not
-be able to see and read the storage file easily, especially when the user is logged out.</p>
+<p>The session reports/logs feature is a crucial feature for our target audience of social workers.</p>
+</li>
+<li>
+<p>A social worker should be able to add their reports for their patient for each session, so that he/she have a consolidated
+view of all their reports specific to the patient. This allows for convenience and easy tracking on the progress of
+their patients.</p>
 </li>
 </ul>
 </div>
@@ -3489,7 +3604,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 05:32:09 UTC
+Last updated 2018-04-12 05:52:38 UTC
 </div>
 </div>
 </body>

@@ -222,7 +222,26 @@ it was essential to provide an easy way to generate the error log on demand to h
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">Opening a calendar : <code>calendar-launch</code></a></h3>
+<h3 id="calendar-tools"><a class="link" href="#calendar-tools">Calendar Tools</a></h3>
+<div class="sect3">
+<h4 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">Opening a calendar : <code>calendar-launch</code></a></h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Calling new <code>show-schedule DATE</code> will return different set of events which will update available navigation options.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="opening-a-calendar-code-calendar-launch-code-2"><a class="link" href="#opening-a-calendar-code-calendar-launch-code-2">Opening a calendar : <code>calendar-launch</code></a></h4>
 <div class="paragraph">
 <p>Opens a calendar in a webview.
 Format: <code>calendar-launch</code></p>
@@ -249,8 +268,8 @@ the calendar in the build-in scene switcher.</p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">Adding and event to the calendar : <code>calendar-add</code></a></h3>
+<div class="sect3">
+<h4 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">Adding and event to the calendar : <code>calendar-add</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to add an event directly to their calendar.</p>
 </div>
@@ -288,8 +307,8 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">List upcoming events in the command line: <code>calendar-list</code></a></h3>
+<div class="sect3">
+<h4 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">List upcoming events in the command line: <code>calendar-list</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to view their upcoming calendar events.</p>
 </div>
@@ -314,8 +333,8 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">Deleting an event from the calendar : <code>calendar-delete</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">Deleting an event from the calendar : <code>calendar-delete</code></a></h4>
 <div class="paragraph">
 <p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> command.</p>
 </div>
@@ -340,8 +359,8 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h3>
+<div class="sect3">
+<h4 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Displays a list of upcoming events to the user and lets them select one to edit.</p>
 </div>
@@ -349,8 +368,8 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <p>Format: <code>calendar-edit</code></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">Reauthenticate Google Oauth : <code>reauthenticate</code></a></h3>
+<div class="sect3">
+<h4 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">Reauthenticate Google Oauth : <code>reauthenticate</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to manually reauthenticate their Google Oauth credentials/permissions for SLAP.</p>
 </div>
@@ -374,8 +393,8 @@ edit. Failure to authenticate will cause the program to freeze and crash.</p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">List upcoming events in the command line: <code>show-schedule</code></a></h3>
+<div class="sect3">
+<h4 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">List upcoming events in the command line: <code>show-schedule</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to view their calendar events for the current day.</p>
 </div>
@@ -403,8 +422,8 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">Opening the Error Log : <code>errorlog</code></a></h3>
+<div class="sect3">
+<h4 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">Opening the Error Log : <code>errorlog</code></a></h4>
 <div class="paragraph">
 <p>Opens the error log in a new window.</p>
 </div>
@@ -424,6 +443,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -689,7 +709,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 05:32:09 UTC
+Last updated 2018-04-12 05:52:38 UTC
 </div>
 </div>
 </body>

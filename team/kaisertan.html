@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Tan Quan Rong Kaiser - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Tan Quan Rong Kaiser - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-session-logger-and-planner-slap-for-social-workers"><a class="link" href="#project-session-logger-and-planner-slap-for-social-workers">PROJECT: Session Logger and Planner (SLAP) for Social Workers</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Session Logger and Planner (SLAP) for Social Workers is for those who prefer to use a desktop app for managing their schedule and contacts*. More importantly, SLAP is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, SLAP can get your daily scheduling and contact management tasks done faster than traditional GUI apps.
+It is a simple Java application intended for social workers to help them plan their day and keep track of their beneficiaries. Some key features of this application include secure sign-in, an address book, a calendar, a daily schedule display, user session logs and maps. Written in Java, it has about 15 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Major enhancement</strong>: added a <strong>authentication feature</strong> and <strong>multi-user capability</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Authentication feature: Users can login and logout from their application with a unique username and password.</p>
+</li>
+<li>
+<p>Multi-user Capability: The application now supports multiple users, each having their own contacts and SLAP.</p>
+</li>
+<li>
+<p>Justification: Firstly, this feature increases the security capability of the application. As the patient details and session
+reports are sensitive data, having to authenticate first helps to maintain a level of confidentiality and integrity. Secondly,
+it converts the application from single-user to multi-user, hence allow for multiple social workers to use the app. This is useful
+in the scenario, where there is a mandate to use a single company laptop.</p>
+</li>
+<li>
+<p>Highlights: The authentication and multi-user feature requires an in-depth analysis of the previous architecture before implementation.
+It involves editing in almost all of the components with more emphasis on the Model and Storage components. An understanding of the n-tier
+architecture is needed as the User Database mimics thats of the AddressBook. It is also a step towards making it a centralised application
+that could be used by institutes of social workers.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor enhancement</strong>: added a <strong>add session reports</strong> feature</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This feature allows the user to add a new session report/log to the list of existing session reports/logs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Justification: This is to allow social workers to keep records of their reports and also to collate into one single display.
+This is a crucial feature of the application for social workers to store their information conveniently.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-T15-B3/main/blob/master/collated/functional/kaisertanqr.md">Functional code</a>]
+[<a href="https://github.com/CS2103JAN2018-T15-B3/main/blob/master/collated/test/kaisertanqr.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>**Project Management</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed released v1.4 - v1.5rc (2 releases) on GitHub</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Did rearrangement to existing contents of the User Guide (TODO: update link: <a href="https://github.com">#14</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Community:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples: <a href="https://github.com/CS2103JAN2018-W11-B2/main/issues/144">1</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="multi-user-and-authentication"><a class="link" href="#multi-user-and-authentication">Multi-user and Authentication</a></h3>
+<div class="sect3">
+<h4 id="create-new-user-code-create-user-code"><a class="link" href="#create-new-user-code-create-user-code">Create new user : <code>create-user</code></a></h4>
+<div class="paragraph">
+<p>Creates a new user account in the application.<br>
+Format: <code>create-user u/USERNAME p/PASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You will need to enter a unique username to successfully create an new user.</p>
+</li>
+<li>
+<p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-existing-user-code-delete-user-code"><a class="link" href="#delete-existing-user-code-delete-user-code">Delete existing user : <code>delete-user</code></a></h4>
+<div class="paragraph">
+<p>Deletes an existing user account in the application.<br>
+Format: <code>delete-user u/USERNAME p/PASSWORD</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You will need to be logged out to use this Command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You will need to enter both the correct username and password for the target user account that you wish to delete.</p>
+</li>
+<li>
+<p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">Login : <code>login</code></a></h4>
+<div class="paragraph">
+<p>Logs the user into the application.<br>
+Format: <code>login u/USERNAME p/PASSWORD</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">Logout: <code>logout</code></a></h4>
+<div class="paragraph">
+<p>Logs the user out of the application.
+Format: <code>logout</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="change-user-password-code-change-user-password-code"><a class="link" href="#change-user-password-code-change-user-password-code">Change user password: <code>change-user-password</code></a></h4>
+<div class="paragraph">
+<p>Change the password of an existing user in the application.<br>
+Format: <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You will need to be logged out to use this Command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You will need to enter both the correct username and password for the target user account that you wish to change password for.</p>
+</li>
+<li>
+<p>You will need to enter both the correct username and password for the target user account that you wish to change password for</p>
+</li>
+<li>
+<p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-factor-authentication-coming-in-v2-0"><a class="link" href="#2-factor-authentication-coming-in-v2-0">2-Factor Authentication [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>User have to use another form of authentication to log in (most probably a one-time password).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="session-reports-and-logs"><a class="link" href="#session-reports-and-logs">Session Reports and Logs</a></h3>
+<div class="sect3">
+<h4 id="adding-a-new-session-report-code-add-log-code"><a class="link" href="#adding-a-new-session-report-code-add-log-code">Adding a new session report: <code>add-log</code></a></h4>
+<div class="paragraph">
+<p>Adds a new session report/log to the person identified by the index number used in the last person listing.<br>
+Format: <code>add-log INDEX log\LOG</code><br>
+Example: <code>add-log 2 log\Today the patient reported he was feeling unwell &#8230;&#8203; &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds the session log the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The date and time will automatically be included. It will store the date and time at the moment you execute the command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0"><a class="link" href="#delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0">Delete a existing session report: <code>delete-log</code> [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Deletes a particular report/log from a person.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-a-new-session-report-code-delete-log-code-coming-in-v2-0"><a class="link" href="#edit-a-new-session-report-code-delete-log-code-coming-in-v2-0">Edit a new session report: <code>delete-log</code> [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Edits particular report/log entries from a person.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="multi-user-feature"><a class="link" href="#multi-user-feature">Multi-User Feature</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagramUD.png" alt="ModelClassDiagramUD" width="800">
+</div>
+<div class="title">Figure 1. Structure of the Model Component (UserDatabase Emphasis)</div>
+</div>
+<div class="paragraph">
+<p>To implement the multi-user feature, where each user has his/her own Address Book, we have added a <code>userDatabase</code> in Model
+to store all the available users in the application. The <code>userDatabase</code> is the same architectural level as the <code>addressBook</code>.
+A similar storing system used in <code>addressBook</code> is also used for <code>userDatabase</code> where the all the user data is stored in a
+single XML file.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-for-database"><a class="link" href="#design-considerations-for-database">Design Considerations for Database</a></h4>
+<div class="paragraph">
+<p>A big design consideration is the architecture in implementing the retrieval and storage of multiple users.</p>
+</div>
+<div class="paragraph">
+<p><strong>A Possible Design</strong><br>
+A possible design was to store users and persons under the same data folder which means encapsulating AddressBook
+in a User. In the XML data storage, the Addressbook will be an element of a User; the User Database will then be the root.<br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;userdatabase&gt;
+    &lt;user&gt;
+        &lt;username&gt; user &lt;/username&gt;
+        &lt;password&gt; pass &lt;/password&gt;
+        &lt;addressbook&gt;
+            &lt;persons&gt;
+                &lt;name&gt;John Doe&lt;/name&gt;
+                &lt;phone&gt;98765432&lt;/phone&gt;
+                &lt;email&gt;johnd@example.com&lt;/email&gt;
+                &lt;address&gt;311, Clementi Ave 2, #02-25&lt;/address&gt;
+                &lt;sessionlogs&gt;&lt;/sessionlogs&gt;
+                &lt;tags&gt;ADHD&lt;/tags&gt;
+            &lt;/persons&gt;
+        &lt;/addressbook&gt;
+    &lt;/user&gt;
+&lt;/userdatabase&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, this may over-complicate and over populate the data storage file very fast
+which can grow quite large with many users. Transportation of the data file may be an issue if the file size becomes too big.</p>
+</div>
+<div class="paragraph">
+<p><strong>Current Implementation</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagramUD.png" alt="StorageClassDiagramUD" width="800">
+</div>
+<div class="title">Figure 2. Structure of the Storage Component (UserDatabase Emphasis)</div>
+</div>
+<div class="paragraph">
+<p>Currently, the User Database mimics the AddressBook classes and instances in the Model and Storage Components.</p>
+</div>
+<div class="paragraph">
+<p>In terms of storage, the User Database of all users is now collectively stored in one XML data file. (eg. users.xml).
+The addressbook of each user is now stored in separate XML files. Each addressbook data file is identified in the following
+format:</p>
+</div>
+<div class="paragraph">
+<p><code>addressbook-[USERNAME].xml</code> where [USERNAME] refers to the username of the user</p>
+</div>
+<div class="paragraph">
+<p>While this can be argued to be bad as there is strong coupling between the user and the addressbook data file, such is
+fixed as in the absence of the addressbook data file, a sample data file will be created.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-user"><a class="link" href="#deleting-user">Deleting User</a></h4>
+<div class="paragraph">
+<p>One thing to highlight about the deleting of user, it also deletes the AddressBook XML data file, hence it cannot be
+retrieved again. It also prevents users from accessing the file again by creating a user with the same username as the one
+being deleted.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="authentication"><a class="link" href="#authentication">Authentication</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="user-login"><a class="link" href="#user-login">User Login</a></h5>
+<div class="paragraph">
+<p>The Login feature involves UI, Logic and Model components. It allows the user to login and logout
+from the application. When the user is logged out, the user commands are limited, some panels are hidden
+the user and the viewing of history is disabled. It serves the purpose of maintaining confidentiality of the data in the application.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LoginCommand</code> is part of Logic component. However it makes use of <code>userDatabase</code> to check for the match in
+the username and password input. Below is a sequence diagram of how the feature works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoginFeatureLogicModelComponent.png" alt="LoginFeatureLogicModelComponent" width="800">
+</div>
+<div class="title">Figure 3. Sequence Diagram for Login Command (Logic Component)</div>
+</div>
+<div class="paragraph">
+<p>The Login feature involves the UI component as well as we need to know when to hide and show certain panels depending on
+whether the user has logged in or not. To maintain our n-tier architecture, we make <code>CommandBox</code> check the login
+status upon each command entry to effect the change on the UI. The sequence diagram is as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoginFeatureUIComponent.png" alt="LoginFeatureUIComponent" width="800">
+</div>
+<div class="title">Figure 4. Sequence Diagram for Login Command (UI Component)</div>
+</div>
+<div class="paragraph">
+<p>When the user is not logged in, commands that manipulate data in the application will be disabled. To avoid editing
+every single command, the invalidity of the command is handled in <code>LogicManager</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="user-logout"><a class="link" href="#user-logout">User Logout</a></h5>
+<div class="paragraph">
+<p>The logout feature similarly involves the UI, Logic and Model components. It allows the user to
+log out from the application, securing his data.</p>
+</div>
+<div class="paragraph">
+<p>The user cannot logout when he/she is not even logged in initially. This is already handled by limiting the availability
+of commands when the user is logged out.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, some of the UI panels will be hidden when the user logs out.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="user-login-status"><a class="link" href="#user-login-status">User Login Status</a></h5>
+<div class="paragraph">
+<p>To identify the login status of the application and know its the correct user, a login status bar on
+the top of the window has been implemented. Its shows the status and the user that is logged in.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoginStatusBarLoggedOut.png" alt="LoginStatusBarLoggedOut" width="800">
+</div>
+<div class="title">Figure 5. Login Status Bar (Logged Out)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LoginStatusBarLoggedIn.png" alt="LoginStatusBarLoggedIn" width="800">
+</div>
+<div class="title">Figure 6. Login Status Bar (Logged In)</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-enhancements"><a class="link" href="#possible-enhancements">Possible enhancements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login UI Box can be implemented before launching the main window</p>
+</li>
+<li>
+<p>Encryption of user file [coming in v2.0]</p>
+</li>
+<li>
+<p>Salting of passwords so that it is not deterministic when hashing/encrypting</p>
+</li>
+<li>
+<p>2-Factor Authentication for login</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<div class="paragraph">
+<p>Data encryption can be implemented a few ways, however with knowledge of the current architecture, the easiest way to
+TODO: ADD details.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 05:52:38 UTC
+</div>
+</div>
+</body>
+</html>
