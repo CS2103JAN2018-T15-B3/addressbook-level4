@@ -155,6 +155,9 @@ Format: <code>create-user u/USERNAME p/PASSWORD</code></p>
 <p>You will need to enter a unique username to successfully create an new user.</p>
 </li>
 <li>
+<p>The username is <strong>not</strong> case-sensitive. eg. "User", "useR" and "uSeR" are the same username.</p>
+</li>
+<li>
 <p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
 </li>
 </ul>
@@ -192,6 +195,12 @@ Format: <code>delete-user u/USERNAME p/PASSWORD</code></p>
 <li>
 <p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
 </li>
+<li>
+<p>The username is <strong>not</strong> case-sensitive. eg. "User", "useR" and "uSeR" are the same username.</p>
+</li>
+<li>
+<p>The password is case-sensitive.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -209,6 +218,12 @@ Format: <code>login u/USERNAME p/PASSWORD</code></p>
 <ul>
 <li>
 <p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+<li>
+<p>The username is <strong>not</strong> case-sensitive. eg. "User", "useR" and "uSeR" are the same username.</p>
+</li>
+<li>
+<p>The password is case-sensitive.</p>
 </li>
 </ul>
 </div>
@@ -254,6 +269,12 @@ Format: <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code>
 </li>
 <li>
 <p>Multiple entries of username and password can be included, however only the last entry will be considered.</p>
+</li>
+<li>
+<p>The username is <strong>not</strong> case-sensitive. eg. "User", "useR" and "uSeR" are the same username.</p>
+</li>
+<li>
+<p>Passwords is case-sensitive.</p>
 </li>
 </ul>
 </div>
@@ -394,6 +415,12 @@ format:</p>
 <p>While this can be argued to be bad as there is strong coupling between the user and the addressbook data file, such is
 fixed as in the absence of the addressbook data file, a sample data file will be created.</p>
 </div>
+<div class="paragraph">
+<p><strong>Other Alternative Designs</strong></p>
+</div>
+<div class="paragraph">
+<p>Other alternative designs involves external third-party database systems such as SQL or no-SQL databases such as MongoDB.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="deleting-user"><a class="link" href="#deleting-user">Deleting User</a></h4>
@@ -501,8 +528,25 @@ the top of the window has been implemented. Its shows the status and the user th
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p>Data encryption can be implemented a few ways, however with knowledge of the current architecture, the easiest way to
-TODO: ADD details.</p>
+<p><strong>Proposed Implementation</strong><br>
+Basing on the current storage architecture, we could implement a FileEncryption class to handle both the encryption and
+decryption when storing and retrieving the data files.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For User Database<br>
+Information in the user database that needs to be encrypted is the username and password. Hashing is a good encryption scheme to use,
+ a two-way encryption scheme is not needed here because we only need to check the validity of the username and password.</p>
+</li>
+<li>
+<p>For Address Book<br>
+AddressBook data files require a two-way encryption scheme as the information needs to be read when the application
+initialises. A symmetric key encryption scheme is more suitable here than public key encryption scheme because less information
+needs to be stored. Also, it is easy when we can use the username as the symmetric key in the encryption scheme. Some
+possible schemes are AES or CBC.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -510,7 +554,7 @@ TODO: ADD details.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 05:52:38 UTC
+Last updated 2018-04-12 11:08:10 UTC
 </div>
 </div>
 </body>

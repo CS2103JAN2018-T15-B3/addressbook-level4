@@ -659,6 +659,12 @@ format:</p>
 <p>While this can be argued to be bad as there is strong coupling between the user and the addressbook data file, such is
 fixed as in the absence of the addressbook data file, a sample data file will be created.</p>
 </div>
+<div class="paragraph">
+<p><strong>Other Alternative Designs</strong></p>
+</div>
+<div class="paragraph">
+<p>Other alternative designs involves external third-party database systems such as SQL or no-SQL databases such as MongoDB.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="deleting-user"><a class="link" href="#deleting-user">3.1.2. Deleting User</a></h4>
@@ -1058,8 +1064,25 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p>Data encryption can be implemented a few ways, however with knowledge of the current architecture, the easiest way to
-TODO: ADD details.</p>
+<p><strong>Proposed Implementation</strong><br>
+Basing on the current storage architecture, we could implement a FileEncryption class to handle both the encryption and
+decryption when storing and retrieving the data files.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For User Database<br>
+Information in the user database that needs to be encrypted is the username and password. Hashing is a good encryption scheme to use,
+ a two-way encryption scheme is not needed here because we only need to check the validity of the username and password.</p>
+</li>
+<li>
+<p>For Address Book<br>
+AddressBook data files require a two-way encryption scheme as the information needs to be read when the application
+initialises. A symmetric key encryption scheme is more suitable here than public key encryption scheme because less information
+needs to be stored. Also, it is easy when we can use the username as the symmetric key in the encryption scheme. Some
+possible schemes are AES or CBC.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -2873,19 +2896,43 @@ their patients.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">social worker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add new session reports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to have a consolidated record of all my reports for easy reference.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">social worker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit my session reports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to have a make edit mistakes in my reports</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`* * `</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">social worker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete my session reports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove reports that are irrelevant</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">secure user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">login</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gain access to my address book</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">secure user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">logout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prevent others from having authorised access to my address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">social worker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">login into my account with any instance of application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can easily access my SLAP information anywhere</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secure user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prevent others from having authorised access to my SLAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">secure user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change my password</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">update and secure access to my address book whenever I want</p></td>
 </tr>
@@ -3604,7 +3651,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 05:52:38 UTC
+Last updated 2018-04-12 11:08:10 UTC
 </div>
 </div>
 </body>
