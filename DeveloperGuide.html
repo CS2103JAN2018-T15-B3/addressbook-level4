@@ -96,10 +96,11 @@
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#authentication-process">H.2. Authentication process</a></li>
 <li><a href="#multi-user-feature-2">H.3. Multi-user feature</a></li>
-<li><a href="#deleting-a-person">H.4. Deleting a person</a></li>
-<li><a href="#saving-data">H.5. Saving data</a></li>
-<li><a href="#calendar-tools">H.6. Calendar Tools</a></li>
-<li><a href="#ui-features-and-map-components">H.7. UI Features and Map Components</a></li>
+<li><a href="#session-reports-and-logs">H.4. Session Reports and Logs</a></li>
+<li><a href="#deleting-a-person">H.5. Deleting a person</a></li>
+<li><a href="#saving-data">H.6. Saving data</a></li>
+<li><a href="#calendar-tools">H.7. Calendar Tools</a></li>
+<li><a href="#ui-features-and-map-components">H.8. UI Features and Map Components</a></li>
 </ul>
 </li>
 </ul>
@@ -2751,15 +2752,16 @@ to remind social worker of previous sessions with the beneficiary.</p>
 <p><strong>Kaiser Tan</strong></p>
 </div>
 <div class="paragraph">
-<p><code>Major feature:</code> User Login</p>
+<p><code>Major feature:</code> User Login and Multi-User capabilities</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The application will support multiple users and each having their own addressbook.</p>
+<p>The application will support multiple users and each having their own addressbook. This is a step towards allowing our application
+to be used as a centralised application used by institute of social workers.</p>
 </li>
 <li>
-<p>User can login and logout safely, preventing external users from accessing the SLAP without authorisation</p>
+<p>User can also login and logout safely, preventing external users from accessing the SLAP without authorisation</p>
 </li>
 <li>
 <p>As a social worker, he/she should be able to secure SLAP and only ensure that it is only accessible to him/her, hence a login function
@@ -2782,35 +2784,6 @@ is needed to maintain the C-I-A security framework.</p>
 <p>A social worker should be able to add their reports for their patient for each session, so that he/she have a consolidated
 view of all their reports specific to the patient. This allows for convenience and easy tracking on the progress of
 their patients.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Clarissa Yong</strong></p>
-</div>
-<div class="paragraph">
-<p><code>Major feature:</code> Organisation of Contacts</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Allows users to filter, sort, mark contacts as favourite, etc.</p>
-</li>
-<li>
-<p>This allows users to view cases by decreasing priority and view a subset of their contacts quiuckly.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><code>Minor feature:</code> Detect Contacts that User Frequently Interacts with</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Detect and track contacts that the user frequently interacts with and allow user to access this list of contacts.</p>
-</li>
-<li>
-<p>This allows the user to quickly and conveniently retrieve the contact information of these contacts.</p>
 </li>
 </ul>
 </div>
@@ -4094,7 +4067,39 @@ no edits have been done to the user&#8217;s AddressBook yet.)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.4. Deleting a person</a></h3>
+<h3 id="session-reports-and-logs"><a class="link" href="#session-reports-and-logs">H.4. Session Reports and Logs</a></h3>
+<div class="sect3">
+<h4 id="add-session-report"><a class="link" href="#add-session-report">H.4.1. Add session report</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a session report to a existing person while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>add-log 1 log/test session log</code><br>
+Expected: Session log will be added to the first person in the list. Success Message shown. Date &amp; Time Stamp included in the session log.</p>
+</li>
+<li>
+<p>Test case: <code>add-log 0 log/test session log</code><br>
+Expected: No session report will be added. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect add-log commands to try: <code>add-log</code>, <code>add-log x log/test log</code> (where x is larger than the list size)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.5. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4126,7 +4131,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.5. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">H.6. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4146,7 +4151,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-tools"><a class="link" href="#calendar-tools">H.6. Calendar Tools</a></h3>
+<h3 id="calendar-tools"><a class="link" href="#calendar-tools">H.7. Calendar Tools</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4389,9 +4394,9 @@ Expected: All error log windows close.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-features-and-map-components"><a class="link" href="#ui-features-and-map-components">H.7. UI Features and Map Components</a></h3>
+<h3 id="ui-features-and-map-components"><a class="link" href="#ui-features-and-map-components">H.8. UI Features and Map Components</a></h3>
 <div class="sect3">
-<h4 id="switching-features"><a class="link" href="#switching-features">H.7.1. Switching features</a></h4>
+<h4 id="switching-features"><a class="link" href="#switching-features">H.8.1. Switching features</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4424,7 +4429,7 @@ Expected: No changes to UI. Error message that feature target name is wrong.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-persons-will-display-updated-ui"><a class="link" href="#selecting-persons-will-display-updated-ui">H.7.2. Selecting persons will display updated UI</a></h4>
+<h4 id="selecting-persons-will-display-updated-ui"><a class="link" href="#selecting-persons-will-display-updated-ui">H.8.2. Selecting persons will display updated UI</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4478,7 +4483,7 @@ Expected: Selects first indexed person and updates UI to display that person&#82
 </div>
 </div>
 <div class="sect3">
-<h4 id="show-schedule-updates-list-of-scheduled-events-shown"><a class="link" href="#show-schedule-updates-list-of-scheduled-events-shown">H.7.3. Show-schedule updates list of scheduled events shown</a></h4>
+<h4 id="show-schedule-updates-list-of-scheduled-events-shown"><a class="link" href="#show-schedule-updates-list-of-scheduled-events-shown">H.8.3. Show-schedule updates list of scheduled events shown</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4531,7 +4536,7 @@ Expected: UI updates to not display any buttons.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="navigate-command-updates-daily-scheduler-map-panel"><a class="link" href="#navigate-command-updates-daily-scheduler-map-panel">H.7.4. Navigate command updates Daily Scheduler Map Panel</a></h4>
+<h4 id="navigate-command-updates-daily-scheduler-map-panel"><a class="link" href="#navigate-command-updates-daily-scheduler-map-panel">H.8.4. Navigate command updates Daily Scheduler Map Panel</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4552,7 +4557,7 @@ Expected: UI refreshes to display directions between event 1 and 2. Message succ
 </div>
 </div>
 <div class="sect3">
-<h4 id="ui-updates-on-log-out-and-log-in"><a class="link" href="#ui-updates-on-log-out-and-log-in">H.7.5. UI updates on Log Out and Log In</a></h4>
+<h4 id="ui-updates-on-log-out-and-log-in"><a class="link" href="#ui-updates-on-log-out-and-log-in">H.8.5. UI updates on Log Out and Log In</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4592,7 +4597,7 @@ Expected: UI refreshes to not display any events or directions or indicators.<br
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:23:21 UTC
+Last updated 2018-04-15 14:48:45 UTC
 </div>
 </div>
 </body>
