@@ -27,22 +27,23 @@
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#user-interface">3. User Interface</a></li>
-<li><a href="#Features">4. Features</a>
+<li><a href="#Features">4. Features</a></li>
+<li><a href="#calendar-quick-start">5. Calendar Quick Start</a>
 <ul class="sectlevel2">
-<li><a href="#help-guide">4.1. Help Guide</a></li>
-<li><a href="#multi-user-and-authentication">4.2. Multi-user and Authentication</a></li>
-<li><a href="#application-navigation">4.3. Application Navigation</a></li>
-<li><a href="#contacts-manipulation">4.4. Contacts Manipulation</a></li>
-<li><a href="#session-reports-and-logs">4.5. Session Reports and Logs</a></li>
-<li><a href="#map-tools">4.6. Map Tools</a></li>
-<li><a href="#calendar-tools">4.7. Calendar Tools</a></li>
-<li><a href="#other-tools">4.8. Other Tools</a></li>
-<li><a href="#exporting">4.9. Exporting</a></li>
-<li><a href="#storage-features">4.10. Storage Features</a></li>
+<li><a href="#help-guide">5.1. Help Guide</a></li>
+<li><a href="#multi-user-and-authentication">5.2. Multi-user and Authentication</a></li>
+<li><a href="#application-navigation">5.3. Application Navigation</a></li>
+<li><a href="#contacts-manipulation">5.4. Contacts Manipulation</a></li>
+<li><a href="#session-reports-and-logs">5.5. Session Reports and Logs</a></li>
+<li><a href="#map-tools">5.6. Map Tools</a></li>
+<li><a href="#calendar-tools">5.7. Calendar Tools</a></li>
+<li><a href="#other-tools">5.8. Other Tools</a></li>
+<li><a href="#exporting">5.9. Exporting</a></li>
+<li><a href="#storage-features">5.10. Storage Features</a></li>
 </ul>
 </li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
+<li><a href="#faq">6. FAQ</a></li>
+<li><a href="#command-summary">7. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -215,10 +216,15 @@ Displays all event information of a specified date including map proposed naviga
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="calendar-quick-start"><a class="link" href="#calendar-quick-start">5. Calendar Quick Start</a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="help-guide"><a class="link" href="#help-guide">4.1. Help Guide</a></h3>
+<h3 id="help-guide"><a class="link" href="#help-guide">5.1. Help Guide</a></h3>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">4.1.1. Viewing help : <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">5.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
 <p>Opens a new user guide window.<br>
 Format: <code>help</code></p>
@@ -226,9 +232,9 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="multi-user-and-authentication"><a class="link" href="#multi-user-and-authentication">4.2. Multi-user and Authentication</a></h3>
+<h3 id="multi-user-and-authentication"><a class="link" href="#multi-user-and-authentication">5.2. Multi-user and Authentication</a></h3>
 <div class="sect3">
-<h4 id="create-new-user-code-create-user-code"><a class="link" href="#create-new-user-code-create-user-code">4.2.1. Create new user : <code>create-user</code></a></h4>
+<h4 id="create-new-user-code-create-user-code"><a class="link" href="#create-new-user-code-create-user-code">5.2.1. Create new user : <code>create-user</code></a></h4>
 <div class="paragraph">
 <p>Creates a new user account in the application.<br>
 Format: <code>create-user u/USERNAME p/PASSWORD</code>
@@ -271,7 +277,7 @@ e.g. <code>create-user u/marcus p/pass</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-existing-user-code-delete-user-code"><a class="link" href="#delete-existing-user-code-delete-user-code">4.2.2. Delete existing user : <code>delete-user</code></a></h4>
+<h4 id="delete-existing-user-code-delete-user-code"><a class="link" href="#delete-existing-user-code-delete-user-code">5.2.2. Delete existing user : <code>delete-user</code></a></h4>
 <div class="paragraph">
 <p>Deletes an existing user account in the application.<br>
 Format: <code>delete-user u/USERNAME p/PASSWORD</code></p>
@@ -285,6 +291,9 @@ Format: <code>delete-user u/USERNAME p/PASSWORD</code></p>
 <td class="content">
 <div class="paragraph">
 <p>You will need to be logged out to use this Command.</p>
+</div>
+<div class="paragraph">
+<p>This command will also delete the user&#8217;s Oauth token.</p>
 </div>
 </td>
 </tr>
@@ -312,7 +321,7 @@ Format: <code>delete-user u/USERNAME p/PASSWORD</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">4.2.3. Login : <code>login</code></a></h4>
+<h4 id="login-code-login-code"><a class="link" href="#login-code-login-code">5.2.3. Login : <code>login</code></a></h4>
 <div class="paragraph">
 <p>Logs the user into the application.<br>
 Format: <code>login u/USERNAME p/PASSWORD</code></p>
@@ -336,14 +345,29 @@ Format: <code>login u/USERNAME p/PASSWORD</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">4.2.4. Logout: <code>logout</code></a></h4>
+<h4 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">5.2.4. Logout: <code>logout</code></a></h4>
 <div class="paragraph">
 <p>Logs the user out of the application.
 Format: <code>logout</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Logging out will close all open calendar and errorlog windows, log out of any Google Calendar sessions, and clear
+the Daily Scheduler view.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="change-user-password-code-change-user-password-code"><a class="link" href="#change-user-password-code-change-user-password-code">4.2.5. Change user password: <code>change-user-password</code></a></h4>
+<h4 id="change-user-password-code-change-user-password-code"><a class="link" href="#change-user-password-code-change-user-password-code">5.2.5. Change user password: <code>change-user-password</code></a></h4>
 <div class="paragraph">
 <p>Change the password of an existing user in the application.<br>
 Format: <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code></p>
@@ -387,16 +411,16 @@ Format: <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="2-factor-authentication-coming-in-v2-0"><a class="link" href="#2-factor-authentication-coming-in-v2-0">4.2.6. 2-Factor Authentication [Coming in v2.0]</a></h4>
+<h4 id="2-factor-authentication-coming-in-v2-0"><a class="link" href="#2-factor-authentication-coming-in-v2-0">5.2.6. 2-Factor Authentication [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>User have to use another form of authentication to log in (most probably a one-time password).</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="application-navigation"><a class="link" href="#application-navigation">4.3. Application Navigation</a></h3>
+<h3 id="application-navigation"><a class="link" href="#application-navigation">5.3. Application Navigation</a></h3>
 <div class="sect3">
-<h4 id="switching-between-feature-interfaces-code-switch-code"><a class="link" href="#switching-between-feature-interfaces-code-switch-code">4.3.1. Switching between feature interfaces : <code>switch</code></a></h4>
+<h4 id="switching-between-feature-interfaces-code-switch-code"><a class="link" href="#switching-between-feature-interfaces-code-switch-code">5.3.1. Switching between feature interfaces : <code>switch</code></a></h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -417,21 +441,25 @@ Format: <code>change-user-password u/USERNAME p/PASSWORD newp/NEWPASSWORD</code>
 <div class="ulist">
 <ul>
 <li>
+<p><code>switch details</code><br>
+Switches to <code>details</code> tab and displays contents</p>
+</li>
+<li>
 <p><code>switch calendar</code><br>
 Switches to <code>calendar</code> tab and displays contents</p>
 </li>
 <li>
-<p><code>switch details</code><br>
-Switches to <code>details</code> tab and displays contents</p>
+<p><code>switch scheduler</code><br>
+Switches to <code>scheduler</code> tab and displays contents</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="contacts-manipulation"><a class="link" href="#contacts-manipulation">4.4. Contacts Manipulation</a></h3>
+<h3 id="contacts-manipulation"><a class="link" href="#contacts-manipulation">5.4. Contacts Manipulation</a></h3>
 <div class="sect3">
-<h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">4.4.1. Adding a person: <code>add</code></a></h4>
+<h4 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">5.4.1. Adding a person: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
@@ -463,14 +491,14 @@ A person can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">4.4.2. Listing all persons : <code>list</code></a></h4>
+<h4 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">5.4.2. Listing all persons : <code>list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">4.4.3. Editing a person : <code>edit</code></a></h4>
+<h4 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">5.4.3. Editing a person : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
@@ -515,7 +543,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">4.4.4. Locating persons by name: <code>find</code></a></h4>
+<h4 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">5.4.4. Locating persons by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -560,9 +588,9 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect3">
-<h4 id="filtering-contacts-by-tag-code-filter-code"><a class="link" href="#filtering-contacts-by-tag-code-filter-code">4.4.5. Filtering contacts by tag: <code>filter</code></a></h4>
+<h4 id="filtering-contacts-by-tag-code-filter-code"><a class="link" href="#filtering-contacts-by-tag-code-filter-code">5.4.5. Filtering contacts by tag: <code>filter</code></a></h4>
 <div class="paragraph">
-<p>Filters persons whose contact contains the given tag.<br>
+<p>Filters persons to only display those whose contact contains the given tag.<br>
 Format: <code>filter TAG</code></p>
 </div>
 <div class="sidebarblock">
@@ -589,7 +617,7 @@ Returns any person that has the tag <code>friends</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">4.4.6. Deleting a person : <code>delete</code></a></h4>
+<h4 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">5.4.6. Deleting a person : <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -630,7 +658,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">4.4.7. Selecting a person : <code>select</code></a></h4>
+<h4 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">5.4.7. Selecting a person : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -671,7 +699,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">4.4.8. Listing entered commands : <code>history</code></a></h4>
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">5.4.8. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -693,9 +721,9 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="session-reports-and-logs"><a class="link" href="#session-reports-and-logs">4.5. Session Reports and Logs</a></h3>
+<h3 id="session-reports-and-logs"><a class="link" href="#session-reports-and-logs">5.5. Session Reports and Logs</a></h3>
 <div class="sect3">
-<h4 id="adding-a-new-session-report-code-add-log-code"><a class="link" href="#adding-a-new-session-report-code-add-log-code">4.5.1. Adding a new session report: <code>add-log</code></a></h4>
+<h4 id="adding-a-new-session-report-code-add-log-code"><a class="link" href="#adding-a-new-session-report-code-add-log-code">5.5.1. Adding a new session report: <code>add-log</code></a></h4>
 <div class="paragraph">
 <p>Adds a new session report/log to the person identified by the index number used in the last person listing.<br>
 Format: <code>add-log INDEX log\LOG</code><br>
@@ -717,22 +745,22 @@ Example: <code>add-log 2 log\Today the patient reported he was feeling unwell &#
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0"><a class="link" href="#delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0">4.5.2. Delete a existing session report: <code>delete-log</code> [Coming in v2.0]</a></h4>
+<h4 id="delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0"><a class="link" href="#delete-a-existing-session-report-code-delete-log-code-coming-in-v2-0">5.5.2. Delete a existing session report: <code>delete-log</code> [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Deletes a particular report/log from a person.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-a-new-session-report-code-delete-log-code-coming-in-v2-0"><a class="link" href="#edit-a-new-session-report-code-delete-log-code-coming-in-v2-0">4.5.3. Edit a new session report: <code>delete-log</code> [Coming in v2.0]</a></h4>
+<h4 id="edit-a-new-session-report-code-edit-log-code-coming-in-v2-0"><a class="link" href="#edit-a-new-session-report-code-edit-log-code-coming-in-v2-0">5.5.3. Edit a new session report: <code>edit-log</code> [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Edits particular report/log entries from a person.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="map-tools"><a class="link" href="#map-tools">4.6. Map Tools</a></h3>
+<h3 id="map-tools"><a class="link" href="#map-tools">5.6. Map Tools</a></h3>
 <div class="sect3">
-<h4 id="navigate-between-scheduled-events-code-navigate-code"><a class="link" href="#navigate-between-scheduled-events-code-navigate-code">4.6.1. Navigate between scheduled events : <code>navigate</code></a></h4>
+<h4 id="navigate-between-scheduled-events-code-navigate-code"><a class="link" href="#navigate-between-scheduled-events-code-navigate-code">5.6.1. Navigate between scheduled events : <code>navigate</code></a></h4>
 <div class="paragraph">
 <p>Displays the directions between planned locations on the daily scheduler map.<br>
 Format: <code>navigate INDEX</code></p>
@@ -745,8 +773,8 @@ Format: <code>navigate INDEX</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Must be on <code>scheduler</code> view first for command to work, else nothing happens.
-<code>show-schedule DATE</code> has to be called BEFORE <code>navigate</code> can work properly.
+<p>Must be on <code>scheduler</code> view first for command to work, else nothing happens (i.e. run <code>switch schedule</code>).
+<code>show-schedule d/DATE</code> has to be called BEFORE <code>navigate</code> can work properly.
 To test function it is recommended to add sufficient number of events, i.e. 2 or more, to the particular date.
 It is assumed that every event location used is valid.</p>
 </div>
@@ -802,26 +830,9 @@ Displays directions between the first and the second event of the day.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calendar-tools"><a class="link" href="#calendar-tools">4.7. Calendar Tools</a></h3>
+<h3 id="calendar-tools"><a class="link" href="#calendar-tools">5.7. Calendar Tools</a></h3>
 <div class="sect3">
-<h4 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">4.7.1. Opening a calendar : <code>calendar-launch</code></a></h4>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Calling new <code>show-schedule DATE</code> will return different set of events which will update available navigation options.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="opening-a-calendar-code-calendar-launch-code-2"><a class="link" href="#opening-a-calendar-code-calendar-launch-code-2">4.7.2. Opening a calendar : <code>calendar-launch</code></a></h4>
+<h4 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">5.7.1. Opening a calendar : <code>calendar-launch</code></a></h4>
 <div class="paragraph">
 <p>Opens a calendar in a webview.
 Format: <code>calendar-launch</code></p>
@@ -847,14 +858,21 @@ the calendar in the build-in scene switcher.</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-launch</code></p>
+</div>
+<div class="paragraph">
+<p>Opens the Google Calendar web app in a new WebView.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">4.7.3. Adding and event to the calendar : <code>calendar-add</code></a></h4>
+<h4 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">5.7.2. Adding and event to the calendar : <code>calendar-add</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to add an event directly to their calendar.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt;</code></p>
+<p>Format: <code>calendar-add title/EVENTNAME start/STARTDATETIME end/ENDDATETIME [loc/LOCATION]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -877,20 +895,40 @@ For example, if the current time is 4am, and the start date is 12am and the end 
 start on the current day at 12am and end at 6am on the same day.</p>
 </div>
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p>The location parameter is optional.</p>
+</div>
+<div class="paragraph">
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-add title/CS2103 Tutorial start/This Thursday at 3PM end/4PM on Thursday loc/NUS School of Computing, COM1, 13 Computing Drive, Singapore 117417</code></p>
+</div>
+<div class="paragraph">
+<p>Adds an event named CS2103 tutorial that starts on the upcoming Thursday at 3pm and ends at 4pm, at the NUS School of Computing, COM1</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar-add title/CS2103 Tutorial start/May 2 3PM end/4PM on May 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds an event named CS2103 tutorial that starts on May 2 at 3pm and ends at 4pm with no location</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">4.7.4. List upcoming events in the command line: <code>calendar-list</code></a></h4>
+<h4 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">5.7.3. List upcoming events in the command line: <code>calendar-list</code></a></h4>
 <div class="paragraph">
-<p>Allows a user to view their upcoming calendar events.</p>
+<p>Allows a user to view their upcoming calendar events (limited to 250 events).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>calendar-list</code></p>
@@ -903,20 +941,27 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-list</code></p>
+</div>
+<div class="paragraph">
+<p>Shows the user a list of their upcoming events (limited to 250 events).</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">4.7.5. Deleting an event from the calendar : <code>calendar-delete</code></a></h4>
+<h4 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">5.7.4. Deleting an event from the calendar : <code>calendar-delete</code></a></h4>
 <div class="paragraph">
-<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> command.</p>
+<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> or <code>show-schedule d/DATE</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>calendar-delete INDEX</code></p>
@@ -929,18 +974,38 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
+</div>
+<div class="paragraph">
+<p>If neither the <code>calendar-list</code> nor <code>show-schedule d/DATE</code> have been called previously, the command will do nothing.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-list</code></p>
+</div>
+<div class="paragraph">
+<p>Shows the user a list of their upcoming events (limited to 250 events) with indexes next to each event.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`calendar-delete 1*</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the first event on that list.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">4.7.6. Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h4>
+<h4 id="editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#editing-an-event-in-the-calendar-code-calendar-edit-code-coming-in-v2-0">5.7.5. Editing an event in the calendar : <code>calendar-edit</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Displays a list of upcoming events to the user and lets them select one to edit.</p>
 </div>
@@ -949,7 +1014,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 </div>
 <div class="sect3">
-<h4 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">4.7.7. Reauthenticate Google Oauth : <code>reauthenticate</code></a></h4>
+<h4 id="reauthenticate-google-oauth-code-reauthenticate-code"><a class="link" href="#reauthenticate-google-oauth-code-reauthenticate-code">5.7.6. Reauthenticate Google Oauth : <code>reauthenticate</code></a></h4>
 <div class="paragraph">
 <p>Allows a user to manually reauthenticate their Google Oauth credentials/permissions for SLAP.</p>
 </div>
@@ -966,20 +1031,27 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <div class="paragraph">
 <p>This command is used to manually reauthenticate the Oauth certificate. The SLAP app will launch the system default
 browser (i.e. not a WebView) and ask them to select the account that they wish to grant the SLAP app permission to
-edit. Failure to authenticate will cause the program to freeze and crash.</p>
+edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>reauthenticate</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the user&#8217;s existing Oauth certificate and attempts to regain authorization.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">4.7.8. List upcoming events in the command line: <code>show-schedule</code></a></h4>
+<h4 id="list-upcoming-events-on-a-particular-day-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-on-a-particular-day-in-the-command-line-code-show-schedule-code">5.7.7. List upcoming events on a particular day in the command line: <code>show-schedule</code></a></h4>
 <div class="paragraph">
-<p>Allows a user to view their calendar events for the current day.</p>
+<p>Allows a user to view their calendar events for a particular day.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>show-schdeule d/&lt;date&gt;</code></p>
+<p>Format: <code>show-schdeule d/DATE</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -995,18 +1067,35 @@ edit. Failure to authenticate will cause the program to freeze and crash.</p>
 <p>This command relies on Google Oauth to access the calendar. Whenever a Google Calendar-related command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples
+* show-schedule d/This Thursday</p>
+</div>
+<div class="paragraph">
+<p>Shows a list of events that occur on this coming Thursday.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>show-schedule d/May 5</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Shows a list of events that occur on May 5.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-tools"><a class="link" href="#other-tools">4.8. Other Tools</a></h3>
+<h3 id="other-tools"><a class="link" href="#other-tools">5.8. Other Tools</a></h3>
 <div class="sect3">
-<h4 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">4.8.1. Opening the Error Log : <code>errorlog</code></a></h4>
+<h4 id="opening-the-error-log-code-errorlog-code"><a class="link" href="#opening-the-error-log-code-errorlog-code">5.8.1. Opening the Error Log : <code>errorlog</code></a></h4>
 <div class="paragraph">
 <p>Opens the error log in a new window.</p>
 </div>
@@ -1027,9 +1116,16 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>errorlog</code></p>
+</div>
+<div class="paragraph">
+<p>Opens the user log in a new WebView.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">4.8.2. Undoing previous command : <code>undo</code></a></h4>
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">5.8.2. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -1075,7 +1171,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">4.8.3. Redoing the previously undone command : <code>redo</code></a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">5.8.3. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -1107,14 +1203,14 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.8.4. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">5.8.4. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.8.5. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.8.5. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
@@ -1122,25 +1218,25 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting"><a class="link" href="#exporting">4.9. Exporting</a></h3>
+<h3 id="exporting"><a class="link" href="#exporting">5.9. Exporting</a></h3>
 <div class="sect3">
-<h4 id="export-slap-code-export-patients-code-code-coming-in-v2-0-code"><a class="link" href="#export-slap-code-export-patients-code-code-coming-in-v2-0-code">4.9.1. Export SLAP : <code>export-patients</code> <code>[coming in v2.0]</code></a></h4>
+<h4 id="export-slap-code-export-patients-code-code-coming-in-v2-0-code"><a class="link" href="#export-slap-code-export-patients-code-code-coming-in-v2-0-code">5.9.1. Export SLAP : <code>export-patients</code> <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Exports your SLAP into a file so that it can be transported across operating systems or devices.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="storage-features"><a class="link" href="#storage-features">4.10. Storage Features</a></h3>
+<h3 id="storage-features"><a class="link" href="#storage-features">5.10. Storage Features</a></h3>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">4.10.1. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">5.10.1. Saving the data</a></h4>
 <div class="paragraph">
 <p>SLAP data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">4.10.2. Encrypting data files <code>[coming in v2.0]</code></a></h4>
+<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">5.10.2. Encrypting data files <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p>Encryption should be done automatically when SLAP is logged out or is exited.</p>
 </div>
@@ -1149,7 +1245,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
+<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -1158,7 +1254,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1213,16 +1309,22 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Calendar List</strong> : <code>calendar-list</code> <code>[Since v1.2]</code></p>
 </li>
 <li>
-<p><strong>Calendar Add</strong> : <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt; lp/&lt;linkedperson&gt;(optional)</code> <code>[Since v1.3] [Updated v1.4]</code></p>
+<p><strong>Calendar Add</strong> : <code>calendar-add title/EVENTNAME start/STARTDATETIME end/ENDDATETIME [loc/LOCATION] `[Since v1.3] [Updated v1.4]</code><br>
+e.g. calendar-add title/CS2103 Tutorial start/This Thursday at 3PM end/4PM on Thursday loc/NUS School of Computing, COM1, 13 Computing Drive, Singapore 117417</p>
 </li>
 <li>
-<p><strong>Calendar Delete</strong> : <code>calendar-delete INDEX</code> <code>[Since v1.4]</code></p>
+<p><strong>Calendar Delete</strong> : <code>calendar-delete INDEX</code> <code>[Since v1.4]</code><br>
+e.g. <code>calendar-delete 1</code></p>
 </li>
 <li>
-<p><strong>Show Schedule</strong> : <code>show-schedule d/&lt;date&gt;</code> <code>[Since v1.4]</code></p>
+<p><strong>Show Schedule</strong> : <code>show-schedule d/DATE `[Since v1.4]</code><br>
+e.g. <code>show-schedule d/May 5</code></p>
 </li>
 <li>
 <p><strong>Error</strong> : <code>errorlog</code> <code>[Since v1.2]</code></p>
+</li>
+<li>
+<p><strong>Reauthenticate</strong> : <code>reauthenticate</code> <code>[Since v1.2]</code></p>
 </li>
 <li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
@@ -1252,7 +1354,7 @@ e.g.<code>navigate 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:32:56 UTC
+Last updated 2018-04-15 10:01:16 UTC
 </div>
 </div>
 </body>

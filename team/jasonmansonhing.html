@@ -228,23 +228,6 @@ it was essential to provide an easy way to generate the error log on demand to h
 <h3 id="calendar-tools"><a class="link" href="#calendar-tools">Calendar Tools</a></h3>
 <div class="sect3">
 <h4 id="opening-a-calendar-code-calendar-launch-code"><a class="link" href="#opening-a-calendar-code-calendar-launch-code">Opening a calendar : <code>calendar-launch</code></a></h4>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Calling new <code>show-schedule DATE</code> will return different set of events which will update available navigation options.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="opening-a-calendar-code-calendar-launch-code-2"><a class="link" href="#opening-a-calendar-code-calendar-launch-code-2">Opening a calendar : <code>calendar-launch</code></a></h4>
 <div class="paragraph">
 <p>Opens a calendar in a webview.
 Format: <code>calendar-launch</code></p>
@@ -270,6 +253,13 @@ the calendar in the build-in scene switcher.</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-launch</code></p>
+</div>
+<div class="paragraph">
+<p>Opens the Google Calendar web app in a new WebView.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="adding-and-event-to-the-calendar-code-calendar-add-code"><a class="link" href="#adding-and-event-to-the-calendar-code-calendar-add-code">Adding and event to the calendar : <code>calendar-add</code></a></h4>
@@ -277,7 +267,7 @@ the calendar in the build-in scene switcher.</p>
 <p>Allows a user to add an event directly to their calendar.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>calendar-add title/&lt;eventname&gt; start/&lt;startdatetime&gt; end/&lt;enddatetime&gt; loc/&lt;location&gt;</code></p>
+<p>Format: <code>calendar-add title/EVENTNAME start/STARTDATETIME end/ENDDATETIME [loc/LOCATION]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -300,20 +290,40 @@ For example, if the current time is 4am, and the start date is 12am and the end 
 start on the current day at 12am and end at 6am on the same day.</p>
 </div>
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p>The location parameter is optional.</p>
+</div>
+<div class="paragraph">
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-add title/CS2103 Tutorial start/This Thursday at 3PM end/4PM on Thursday loc/NUS School of Computing, COM1, 13 Computing Drive, Singapore 117417</code></p>
+</div>
+<div class="paragraph">
+<p>Adds an event named CS2103 tutorial that starts on the upcoming Thursday at 3pm and ends at 4pm, at the NUS School of Computing, COM1</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>calendar-add title/CS2103 Tutorial start/May 2 3PM end/4PM on May 2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds an event named CS2103 tutorial that starts on May 2 at 3pm and ends at 4pm with no location</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="list-upcoming-events-in-the-command-line-code-calendar-list-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-calendar-list-code">List upcoming events in the command line: <code>calendar-list</code></a></h4>
 <div class="paragraph">
-<p>Allows a user to view their upcoming calendar events.</p>
+<p>Allows a user to view their upcoming calendar events (limited to 250 events).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>calendar-list</code></p>
@@ -326,20 +336,27 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-list</code></p>
+</div>
+<div class="paragraph">
+<p>Shows the user a list of their upcoming events (limited to 250 events).</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="deleting-an-event-from-the-calendar-code-calendar-delete-code"><a class="link" href="#deleting-an-event-from-the-calendar-code-calendar-delete-code">Deleting an event from the calendar : <code>calendar-delete</code></a></h4>
 <div class="paragraph">
-<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> command.</p>
+<p>Allows the user to delete an event based on the index listed from the <code>calendar-list</code> or <code>show-schedule d/DATE</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>calendar-delete INDEX</code></p>
@@ -352,14 +369,34 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>calendar-<strong></code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</strong></code> command is executed, the
+<p><code>calendar-</code> commands rely on Google Oauth to modify the calendar. Whenever a <code>calendar-</code> command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
+</div>
+<div class="paragraph">
+<p>If neither the <code>calendar-list</code> nor <code>show-schedule d/DATE</code> have been called previously, the command will do nothing.</p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>calendar-list</code></p>
+</div>
+<div class="paragraph">
+<p>Shows the user a list of their upcoming events (limited to 250 events) with indexes next to each event.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`calendar-delete 1*</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deletes the first event on that list.</p>
 </div>
 </div>
 <div class="sect3">
@@ -389,20 +426,27 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <div class="paragraph">
 <p>This command is used to manually reauthenticate the Oauth certificate. The SLAP app will launch the system default
 browser (i.e. not a WebView) and ask them to select the account that they wish to grant the SLAP app permission to
-edit. Failure to authenticate will cause the program to freeze and crash.</p>
+edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Examples:
+* <code>reauthenticate</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the user&#8217;s existing Oauth certificate and attempts to regain authorization.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="list-upcoming-events-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-in-the-command-line-code-show-schedule-code">List upcoming events in the command line: <code>show-schedule</code></a></h4>
+<h4 id="list-upcoming-events-on-a-particular-day-in-the-command-line-code-show-schedule-code"><a class="link" href="#list-upcoming-events-on-a-particular-day-in-the-command-line-code-show-schedule-code">List upcoming events on a particular day in the command line: <code>show-schedule</code></a></h4>
 <div class="paragraph">
-<p>Allows a user to view their calendar events for the current day.</p>
+<p>Allows a user to view their calendar events for a particular day.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>show-schdeule d/&lt;date&gt;</code></p>
+<p>Format: <code>show-schdeule d/DATE</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -418,11 +462,28 @@ edit. Failure to authenticate will cause the program to freeze and crash.</p>
 <p>This command relies on Google Oauth to access the calendar. Whenever a Google Calendar-related command is executed, the
 Oauth certificate will be checked. If the user has not authorized the SLAP app to manage their calendar, the SLAP
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
-to grant the SLAP app permission to edit. Failure to authenticate will cause the program to freeze and crash.</p>
+to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Examples
+* show-schedule d/This Thursday</p>
+</div>
+<div class="paragraph">
+<p>Shows a list of events that occur on this coming Thursday.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>show-schedule d/May 5</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Shows a list of events that occur on May 5.</p>
 </div>
 </div>
 <div class="sect3">
@@ -446,6 +507,13 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>errorlog</code></p>
+</div>
+<div class="paragraph">
+<p>Opens the user log in a new WebView.</p>
 </div>
 </div>
 </div>
@@ -537,6 +605,19 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Alternative 4: </strong> Pure CLI Interface</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple adgenda view with relatively simple API to understand.</p>
+</li>
+<li>
+<p>Cons: Not as feature rich as the other options and would require a custom local storage layer to have persistant data.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -552,7 +633,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <p>Pros: Can take advantage of Google&#8217;s first-party Calendar APIs for seamless CLI data manipulation.</p>
 </li>
 <li>
-<p>Cons: Extremely complicated to configure and set up.</p>
+<p>Cons: Extremely complicated to configure and set up in a testable way.</p>
 </li>
 </ul>
 </div>
@@ -567,6 +648,9 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <li>
 <p>Cons: Requires additional local storage implementations and calendar events are no longer synced to the cloud.</p>
 </li>
+<li>
+<p>Cons: Less secure due to the requirement of local storage; more prone to file loss.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -574,7 +658,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code"><a class="link" href="#aspect-implementation-of-code-addeventcommand-code-code-calendar-add-code">Aspect: Implementation of <code>AddEventCommand</code> &#8594; <code>calendar-add</code></a></h5>
+<h5 id="aspect-implementation-of-code-addeventcommand-code-code-calendar-add-args-code"><a class="link" href="#aspect-implementation-of-code-addeventcommand-code-code-calendar-add-args-code">Aspect: Implementation of <code>AddEventCommand</code> &#8594; <code>calendar-add  [args..]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -586,6 +670,9 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </li>
 <li>
 <p>Cons: Requires the user to authenticate our application before this feature works correctly.</p>
+</li>
+<li>
+<p>Cons: Requires a complex parser to make the input format more friendly for a wider range of users.</p>
 </li>
 </ul>
 </div>
@@ -607,7 +694,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code"><a class="link" href="#aspect-implementation-of-code-vieweventscommand-code-code-calendar-launch-code">Aspect: Implementation of <code>ViewEventsCommand</code> &#8594; <code>calendar-launch</code></a></h5>
+<h5 id="aspect-implementation-of-code-viewcalendarcommand-code-code-calendar-launch-code-and-code-switch-calendar-code"><a class="link" href="#aspect-implementation-of-code-viewcalendarcommand-code-code-calendar-launch-code-and-code-switch-calendar-code">Aspect: Implementation of <code>ViewCalendarCommand</code> &#8594; <code>calendar-launch</code> and <code>switch calendar</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -618,13 +705,16 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <p>Pros: Low development cost as the webview exists already.</p>
 </li>
 <li>
+<p>Pros: Visually clear to the user how their calendar (and events) is organized.</p>
+</li>
+<li>
 <p>Cons: Requires an internet connection. Has no CLI-friendly output.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2: </strong> List events in the CLI</p>
+<p><strong>Alternative 2: </strong> List events in the CLI (see next consideration)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -640,7 +730,88 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code"><a class="link" href="#aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code">Aspect: Implementation of <code>EditEventCommand</code> &#8594; <code>calendar-edit</code></a></h5>
+<h5 id="aspect-implementation-of-code-viewcalendareventscommand-code-code-calendar-list-code"><a class="link" href="#aspect-implementation-of-code-viewcalendareventscommand-code-code-calendar-list-code">Aspect: Implementation of <code>ViewCalendarEventsCommand</code> &#8594; <code>calendar-list</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> CLI Output</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Provides a command-line friendly way to view upcoming calendar events.</p>
+</li>
+<li>
+<p>Cons: Much higher development cost as it was necessary to parse and format the response from Google&#8217;s APIs.</p>
+</li>
+<li>
+<p>Cons: Requires OAuth.</p>
+</li>
+<li>
+<p>Cons: Less visually clear to the user how their events are spaced out temporally.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new calendar interface similar to the Contacts Pane</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Pros: Visually easy to parse and thematically in line with the overall design language of the application.</p>
+</li>
+<li>
+<p>Cons: Requires a significant implementation change to adapt the UI due to the non-locally stored nature of the data from Google.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-viewcalendareventsforparticulardaycommand-code-code-show-schedule-args-code"><a class="link" href="#aspect-implementation-of-code-viewcalendareventsforparticulardaycommand-code-code-show-schedule-args-code">Aspect: Implementation of <code>ViewCalendarEventsForParticularDayCommand</code> &#8594; <code>show-schedule [args..]</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> CLI Output</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can adapt <code>calendar-list</code> command but increase specificity.</p>
+</li>
+<li>
+<p>Pros: Can pass this data to the daily scheduler feature to minimize duplicate code generation.</p>
+</li>
+<li>
+<p>Cons: Less visually clear to the user how their events are spaced out temporally.</p>
+</li>
+<li>
+<p>Cons: Requires OAuth.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new calendar interface similar to the Contacts Pane</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Visually easy to parse and thematically in line with the overall design language of the application.</p>
+</li>
+<li>
+<p>Pros: Can reuse the <code>calendar-list</code> alternative 2 code if that route is decided upon.</p>
+</li>
+<li>
+<p>Cons: Requires a significant implementation change to adapt the UI due to the non-locally stored nature of the data from Google.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code-coming-in-v2-0"><a class="link" href="#aspect-implementation-of-code-editeventcommand-code-code-calendar-edit-code-coming-in-v2-0">Aspect: Implementation of <code>EditEventCommand</code> &#8594; <code>calendar-edit</code> [Coming in v2.0]</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -673,7 +844,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code"><a class="link" href="#aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-code">Aspect: Implementation of <code>DeleteEventCommand</code> &#8594; <code>calendar-delete</code></a></h5>
+<h5 id="aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-args-code"><a class="link" href="#aspect-implementation-of-code-deleteeventcommand-code-code-calendar-delete-args-code">Aspect: Implementation of <code>DeleteEventCommand</code> &#8594; <code>calendar-delete [args..]</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -682,6 +853,9 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <ul>
 <li>
 <p>Pros: First-party direct access to Google Calendar data.</p>
+</li>
+<li>
+<p>Pros: Scales well with multiple users (sandboxed credential authorization).</p>
 </li>
 <li>
 <p>Cons: Requires the user to authenticate our application before this feature works correctly.</p>
@@ -694,10 +868,218 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No implementation required as everything happens through the spawned webview.</p>
+<p>Pros: No implementation required as everything happens through the spawned WebView.</p>
 </li>
 <li>
 <p>Cons: No CLI-friendly output. More resource intensive on the end-user&#8217;s system.</p>
+</li>
+<li>
+<p>Cons: Does not scale well with multiple users.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Displaying the calendar within a WebView</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the WebView is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-launch</code> and not logged in<br>
+Expected: Error log command states that you must be logged in to use the command.</p>
+</li>
+<li>
+<p>Test case: <code>View &gt; Open Calendar</code> and not logged in<br>
+Expected: Calendar WebView opens and states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: Press <code>F8</code> and not logged in<br>
+Expected: Calendar WebView opens and states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-launch</code> and logged in<br>
+Expected: Calendar WebView opens and the calendar is displayed (if not signed in to a Google Calendar account, the user will be prompted to sign in).</p>
+</li>
+<li>
+<p>Test case: <code>View &gt; Open Calendar</code> and logged in<br>
+Expected: Calendar WebView opens and the calendar is displayed (if not signed in to a Google Calendar account, the user will be prompted to sign in).</p>
+</li>
+<li>
+<p>Test case: Press <code>F8</code> and logged in<br>
+Expected: Calendar WebView opens and the calendar is displayed (if not signed in to a Google Calendar account, the user will be prompted to sign in).</p>
+</li>
+<li>
+<p>Test case: <code>logout</code> with open calendar WebViews open (one or many)<br>
+Expected: All calendar windows close and user is logged out from signed-in calendar sessions (verify by logging as any user).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Displaying the calendar within the scene switcher</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>switch calendar</code> and not logged in<br>
+Expected: Switch case states that you must be logged in to use the command.</p>
+</li>
+<li>
+<p>Test case: <code>switch calendar</code> and logged in<br>
+Expected: Scene is switched to display the calendar (if not signed in to a Google Calendar account, the user will be prompted to sign in).</p>
+</li>
+<li>
+<p>Test case: <code>logout</code> and logged in<br>
+Expected: User is signed out from the calendar scene session (verify by logging in as any user).</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Reauthenticating Oauth certificate for calendar use</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>reauthenticate</code> and not logged in<br>
+Expected: Reauthenticate command states that you must be logged in to use the command.</p>
+</li>
+<li>
+<p>Test case: <code>reauthenticate</code> and logged in<br>
+Expected: System default browser is launched and user is asked to select an account to authenticate the SLAP app to manage. Failure to do so will freeze the application. Once permission has been granted, a test event will be added and deleted.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a calendar event</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Listing upcoming calendar events in the command results box</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-list</code> and not logged in<br>
+Expected: calendar-list command states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-list</code> and logged in<br>
+Expected: If user does not have a valid Oauth certificate, the system default browser is launched and asks the user to select an account to authorize the SLAP app to manage. Failure to do so will free the application. Assuming a valid certificate is obtained, if the user has any upcoming events, they will be displayed (up to 250). Otherwise, the command will state that no upcoming events were found.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting a calendar event</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Prerequisites: List all upcoming events using the <code>calendar-list</code> command or list events for a particular say using <code>show-schedule d/DATE</code>. A non-zero amount of events is required in either case.</p>
+</li>
+<li>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-delete 1</code> and not logged in<br>
+Expected: calendar-list command states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-delete 1</code> and logged in and neither <code>calendar-list</code> nor <code>show-schedule</code> has been run<br>
+Expected: Nothing will happen.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-delete 1</code> and logged in and <code>calendar-list</code> nor <code>show-schedule</code> has been run but no events are displayed+
+Expected: calendar-delete command will throw an invalid index exception and inform the user of the proper command usage.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-delete 1</code> and logged in and <code>calendar-list</code> nor <code>show-schedule</code> has been run and a non-zero number of events are displayed+
+Expected: calendar-delete command will delete the event at index 1 and inform the user of the deleted event.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-delete 5</code> and logged in and <code>calendar-list</code> nor <code>show-schedule</code> has been run and a non-zero, but less than 5, number of events are displayed+
+Expected: calendar-delete command will delete an invalid index exception and inform the user of the proper command usage.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Display the user&#8217;s events for a particular day in the command results box</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>show-schedule d/May 5</code><br>
+Expected: If there are calendar events for this date, they will be displayed. Otherwise, a message will inform the user that there are no events for this day.</p>
+</li>
+<li>
+<p>Test case: <code>show-schedule d/On Tuesday</code><br>
+Expected: If there are calendar events for this date, they will be displayed. Otherwise, a message will inform the user that there are no events for this day.</p>
+</li>
+<li>
+<p>Test case: <code>show-schedule</code><br>
+Expected: Display invalid command format and display correct command usage.</p>
+</li>
+<li>
+<p>Test case: <code>show-schedule d/May 5 after 2PM</code>
+Expected: Ignores the time; If there are calendar events for this date at any time, they will be displayed. Otherwise, a message will inform the user that there are no events for this day.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Displaying the error log within a WebView</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>errorlog</code> and not logged in<br>
+Expected: Error log command states that you must be logged in to use the command.</p>
+</li>
+<li>
+<p>Test case: <code>View &gt; Show Error Log</code> and not logged in<br>
+Expected: Error log WebView opens and states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>errorlog</code> and logged in<br>
+Expected: Error log WebView opens and the error log is displayed.</p>
+</li>
+<li>
+<p>Test case: <code>View &gt; Show Error Log</code> and logged in<br>
+Expected: Error log WebView opens and the error log is displayed.</p>
+</li>
+<li>
+<p>Test case: <code>logout</code> with open error logs WebViews open (one or many)<br>
+Expected: All error log windows close.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
@@ -712,7 +1094,7 @@ to grant the SLAP app permission to edit. Failure to authenticate will cause the
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:32:56 UTC
+Last updated 2018-04-15 10:01:16 UTC
 </div>
 </div>
 </body>
