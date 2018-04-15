@@ -147,14 +147,42 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 the different sections of SLAP.</p>
 </div>
 <div class="paragraph">
-<div class="title">Main UI of SLAP program.</div>
-<p>TODO: ADD IMAGE</p>
+<p><strong>Before beginning:</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>Sections of the interface:</strong><br></p>
+<p>Before you can see all the features of SLAP, you are required to log into your account.</p>
+</div>
+<div class="paragraph">
+<p>You can either use <code>login u/user p/pass</code> for the default account as a trial or create your own account using
+<code>create-user user/USERNAME pass/PASSWORD</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/before-login.png" alt="before login" width="790">
+</div>
+<div class="title">Figure 2. Before logging-in to SLAP.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/after-login.png" alt="after login" width="790">
+</div>
+<div class="title">Figure 3. After logging-in to SLAP.</div>
+</div>
+<div class="paragraph">
+<p><strong>Sections of the Main User Interface:</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui-sections.png" alt="ui sections" width="790">
+</div>
+<div class="title">Figure 4. Guidelines to Main UI</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p><strong>Login Status Bar:</strong><br>
+Displays username and indicates if user is logged in.</p>
+</li>
 <li>
 <p><strong>Beneficiary List Panel:</strong><br>
 Displays all beneficiaries existing in the program.</p>
@@ -172,19 +200,88 @@ Notifies the command feedback to the user.</p>
 Indicates current feature being viewed scheduled in the program.</p>
 </li>
 <li>
-<p><strong>Details Panel:</strong><br>
-TODO: ADD IMAGE
-Displays all information of a specified beneficiary including map location and previously logged session reports.</p>
+<p><strong>Features Panel:</strong><br>
+Executing <code>switch FEATURE</code> and/or clicking on respective tab on <code>Features Tab</code> will trigger this region to display the
+respective feature panel.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Sections of the Person Details Feature:</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui-section-details.png" alt="ui section details" width="790">
+</div>
+<div class="title">Figure 5. Guidelines to Details Panel</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Table of Particulars:</strong><br>
+Displays the particulars of the selected beneficiary.</p>
 </li>
 <li>
-<p><strong>Calendar Panel:</strong><br>
-TODO: ADD IMAGE
-In-app view of Google Calendar paired. Must be logged in and given permission for calendar functions to work.</p>
+<p><strong>Address Location Panel:</strong><br>
+Marks  and displays the address of the beneficiary on a map component.</p>
 </li>
 <li>
-<p><strong>Daily Scheduler Panel:</strong><br>
-TODO: ADD IMAGE
-Displays all event information of a specified date including map proposed navigation routes between events.</p>
+<p><strong>Session Reports Panel:</strong><br>
+Displays the existing session logs of the selected beneficiary.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Sections of the Calendar Feature:</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui-section-calendar-before.png" alt="ui section calendar before" width="790">
+</div>
+<div class="title">Figure 6. Guidelines to Calendar Panel (Before)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui-section-calendar-after.png" alt="ui section calendar after" width="790">
+</div>
+<div class="title">Figure 7. Guidelines to Calendar Panel (After)</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Log in for Display of Calendar:</strong><br>
+Requires user to log in to Google Calendar account within the app to display the calendar.
+Note that this log in is separate from the permissions request that authorises SLAP to run Calendar functions. (For more information check out <code>Calendar Tools</code> section)</p>
+</li>
+<li>
+<p><strong>Display of Calendar:</strong><br>
+After logging in, the user will be able to see the calendar paired with SLAP.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Sections of the Daily Scheduler Feature:</strong><br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ui-section-scheduler.png" alt="ui section scheduler" width="790">
+</div>
+<div class="title">Figure 8. Guidelines to Daily Scheduler Panel</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Scheduled Sessions List Panel:</strong><br>
+Displays the scheduled events here after calling <code>show-schedule d/DATE</code>.</p>
+</li>
+<li>
+<p><strong>Direction Between Events Map Panel:</strong><br>
+Displays a suggested navigation route between events after calling <code>navigate INDEX</code> where, for example <code>navigate 1</code> will display the direction between events number 1 and 2 of the day.</p>
+</li>
+<li>
+<p><strong>Navigation Options Indicator:</strong><br>
+Displays a number of buttons at the side of map to indicate journeys available to navigate.
+This will correspond to the valid indexes for <code>navigate INDEX</code>.</p>
 </li>
 </ol>
 </div>
@@ -787,7 +884,9 @@ It is assumed that every event location used is valid.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays direction between two different but adjacent events by specifying <code>INDEX</code></p>
+<p>Displays direction between two different but adjacent events by specifying <code>INDEX</code>. This will display the direction
+between <code>Event Num: INDEX</code> and <code>Event Num: INDEX + 1</code>. For example, <code>navigate 1</code> will show the directions between
+the first and the second event of the day.</p>
 </li>
 <li>
 <p><code>INDEX</code> must be more then <code>1</code>, but less than total events for the day minus ONE or <code>NUM_OF_EVENTS - 1</code>.</p>
@@ -1354,7 +1453,7 @@ e.g.<code>navigate 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:55:34 UTC
+Last updated 2018-04-15 11:04:28 UTC
 </div>
 </div>
 </body>
