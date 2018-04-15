@@ -94,8 +94,11 @@
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#authentication-process">H.2. Authentication process</a></li>
+<li><a href="#multi-user-feature-2">H.3. Multi-user feature</a></li>
+<li><a href="#deleting-a-person">H.4. Deleting a person</a></li>
+<li><a href="#saving-data">H.5. Saving data</a></li>
+<li><a href="#calendar-tools">H.6. Calendar Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -658,6 +661,11 @@ format:</p>
 <div class="paragraph">
 <p>While this can be argued to be bad as there is strong coupling between the user and the addressbook data file, such is
 fixed as in the absence of the addressbook data file, a sample data file will be created.</p>
+</div>
+<div class="paragraph">
+<p>Also, there may be a security concern that a side channel information leak because an external party can figure
+ out the number of active users from the number of addressbook files. However, such information is not very useful to conduct
+an attack on the application.</p>
 </div>
 <div class="paragraph">
 <p><strong>Other Alternative Designs</strong></p>
@@ -3456,10 +3464,8 @@ their patients.</p>
 <h3 id="use-case-user-login" class="discrete">Use case: User Login</h3>
 <div class="paragraph">
 <p><strong>MSS</strong>
-1.  User enters username
-2.  AddressBook requests for password
-3.  User enters password
-4.  AddressBook allows access to UI</p>
+1.  User enters username and password
+2.  SLAP allows access to UI</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -3467,32 +3473,25 @@ their patients.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. AddressBook detects invalid username</p>
+<p>1a. SLAP detects invalid username<br></p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook displays “invalid username” and request for username followed by Step 1</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
+<p>1a1. SLAP displays “invalid username” and request for username followed by Step 1<br>
+Use case resumes at step 1.</p>
 </li>
 </ul>
 </div>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>*3a. AddressBook detects invalid password</p>
-</div>
-<div class="paragraph">
-<p>+</p>
-</div>
+<li>
+<p>3a. SLAP detects invalid password<br></p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook displays “invalid password” and request for username followed by Step 1</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
+<p>3a1. SLAP displays “invalid password” and request for username followed by Step 1<br>
+Use case resumes at step 1.</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
@@ -3500,20 +3499,90 @@ their patients.</p>
 <h3 id="use-case-user-logout" class="discrete">Use case: User Logout</h3>
 <div class="paragraph">
 <p><strong>MSS</strong>
-1.  User attempts to logout
-2.  AddressBook prompts for confirmation to logout
-3.  User confirms
-4.  AddressBook logs the user out</p>
+1.  User attempts to logout<br>
+2.  SLAP prompts for confirmation to logout<br>
+3.  User confirms<br>
+4.  AddressBook logs the user out<br></p>
+</div>
+<h3 id="use-case-create-user" class="discrete">Use case: Create User</h3>
+<div class="paragraph">
+<p><strong>MSS</strong>
+1.  User enters desired username and password to create user
+2.  SLAP creates a user with the input username and password</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. SLAP detects invalid characters used in username and/or password<br></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. SLAP displays “invalid username and/or password” and request for username and password followed by Step 1<br>
+Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. SLAP detects that the username is taken<br></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. SLAP displays “username has been taken” and request for a new username and password followed by Step 1<br>
+Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-user" class="discrete">Use case: Delete User</h3>
+<div class="paragraph">
+<p><strong>MSS</strong>
+1.  User enters desired username and password to delete user
+2.  SLAP deletes the user with the input username and password</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. SLAP detects no such username exists<br></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. SLAP displays “invalid username and/or password” and request for username and password followed by Step 1<br>
+Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. SLAP detects username exists but incorrect password<br></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. SLAP displays “invalid username and/or password” and request for username and password followed by Step 1<br>
+Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <h3 id="use-case-export-addressbook" class="discrete">Use case: Export AddressBook</h3>
 <div class="paragraph">
 <p><strong>MSS</strong>
-1.  User attempts to export AddressBook
-2.  AddressBook prompts for directory to export the file
-3.  User enters directory
-4.  Address prompts for confirmation
-5.  User confirms
-6.  AddressBook exports storage file into specified directory</p>
+1.  User attempts to export AddressBook<br>
+2.  AddressBook prompts for directory to export the file<br>
+3.  User enters directory<br>
+4.  Address prompts for confirmation<br>
+5.  User confirms<br>
+6.  AddressBook exports storage file into specified directory<br></p>
 </div>
 </div>
 </div>
@@ -3701,12 +3770,308 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="authentication-process"><a class="link" href="#authentication-process">H.2. Authentication process</a></h3>
+<div class="sect3">
+<h4 id="login-and-logout"><a class="link" href="#login-and-logout">H.2.1. Login and Logout</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Login as a specific user.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: An existing user (with username: "test" and password: "pass") created.</p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/pass</code><br>
+Expected: Login successful and GUI displays UI panels. Login successful in status message. Login status bar changes to green and displays
+login details.</p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/password</code><br>
+Expected: Login unsuccessful. Error message shown in status message. Login status bar unchanged.</p>
+</li>
+<li>
+<p>Test Case: <code>login u/testsss p/pass</code><br>
+Expected: Login unsuccessful. Error message shown in status message. Login status bar unchanged.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Logout from an account.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application is logged in as a user.</p>
+</li>
+<li>
+<p>Test Case: <code>logout</code><br>
+Expected: Logout is successful.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Login when user is already logged in.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application is logged in as a user "test".</p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/pass</code><br>
+Expected: Login unsuccessful. Error message showing that user has already in is displayed. Login status bar unchanged.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Logout when user is already logged out.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application has not been logged into.</p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/pass</code><br>
+Expected: Login unsuccessful. Error message showing that user has already in is displayed. Login status bar unchanged.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="command-restrictions-when-not-logged-in"><a class="link" href="#command-restrictions-when-not-logged-in">H.2.2. Command restrictions when not logged in</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Executing available commands when logged out.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application has not been logged into.</p>
+</li>
+<li>
+<p>Test Case: <code>help</code><br>
+Expected: Command is executed. Help guide window opens.</p>
+</li>
+<li>
+<p>Other available commands to try: <code>create-user</code>, <code>delete-user</code>, <code>change-user-password</code>, <code>login</code>, <code>exit</code><br>
+Expected: Command is executed as intented</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Executing unavailable commands when logged out.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application has not been logged into.</p>
+</li>
+<li>
+<p>Test Case: <code>list</code><br>
+Expected: Command is not executed. Error message shown.</p>
+</li>
+<li>
+<p>Other unavailable commands to try: <code>edit</code>, <code>add</code>, <code>switch</code>, <code>calendar-launch</code>, &#8230;&#8203;<br>
+Expected: Command is not executed and error message is shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="security-concern-with-history-feature"><a class="link" href="#security-concern-with-history-feature">H.2.3. Security concern with history feature</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unable to access history when logged out.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application has not been logged into.</p>
+</li>
+<li>
+<p>Test Case:<br>
+<code>help</code><br>
+Press "Up" arrow key<br>
+Expected: User is unable to view history.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>History is cleared when logout.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: An existing user (with username: "test" and password: "pass") is created.</p>
+</li>
+<li>
+<p>Test Case:<br>
+<code>login u/test p/pass</code><br>
+<code>help</code><br>
+<code>list</code><br>
+<code>logout</code><br>
+<code>login u/test p/pass</code><br>
+Press "Up" arrow key<br>
+Expected: Should only be able to access history up to the 2nd <code>login u/test p/pass</code>. ie. user cant see <code>help</code> and <code>list</code>.</p>
+</li>
+<li>
+<p>Other test cases: Any other combinations of commands entered after login. Check history after a logout and login.<br>
+Expected: Should not be able to access history from the previous login session.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="multi-user-feature-2"><a class="link" href="#multi-user-feature-2">H.3. Multi-user feature</a></h3>
+<div class="sect3">
+<h4 id="creating-a-user"><a class="link" href="#creating-a-user">H.3.1. Creating a user</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creating a user.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: No such user with username "test" exists.<br></p>
+</li>
+<li>
+<p>Test Case: <code>create-user u/TeSt p/pass</code><br>
+Expected: User with username "test" and password "pass" is created. Success message shown.<br></p>
+</li>
+<li>
+<p>Test Case: <code>create-user u/test p/pass</code><br>
+Expected: No user created. Error message that username already exists is shown.<br></p>
+</li>
+<li>
+<p>Test Case (Username contains spaces) : <code>create-user u/test test p/pass</code><br>
+Expected: No user created. Error message that username format is wrong.<br></p>
+</li>
+<li>
+<p>Test Case (Password contains spaces) : <code>create-user u/test p/pass pass</code><br>
+Expected: No user created. Error message that username format is wrong.<br></p>
+</li>
+<li>
+<p>Test case: <code>login u/test p/pass</code><br>
+Expected: Login is successful with a sample patient address book loaded.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-user"><a class="link" href="#deleting-a-user">H.3.2. Deleting a user</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a user.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: An existing user (with username: "test" and password: "pass") created. User is logged out from the application.</p>
+</li>
+<li>
+<p>Test Case: <code>delete-user u/TeSt p/pass</code><br>
+Expected: User is deleted. Success message shown.<br></p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/pass</code><br>
+Expected: Login unsuccessful. Error message shown in status message. Login status bar unchanged.<br></p>
+</li>
+<li>
+<p>Test Case (No double deletion) : <code>delete-user u/test p/pass</code><br>
+Expected: No user is deleted. Error message that username and password may be wrong.<br></p>
+</li>
+<li>
+<p>Test case (User not existent) : <code>login u/hello p/pass</code><br>
+Expected: No user is deleted. Error message that username and password may be wrong.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-a-user-s-password"><a class="link" href="#changing-a-user-s-password">H.3.3. Changing a user&#8217;s password</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Changing a user.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: An existing user (with username: "test" and password: "pass") created. User is logged out from the application.</p>
+</li>
+<li>
+<p>Test Case: <code>change-user-password u/TeSt p/pass newp/password</code><br>
+Expected: User password is changed. Success message shown.<br></p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/pass</code><br>
+Expected: Login unsuccessful. Error message shown in status message. Login status bar unchanged.<br></p>
+</li>
+<li>
+<p>Test Case: <code>login u/test p/password</code><br>
+Expected: Login successful and GUI displays UI panels. Login successful in status message. Login status bar changes to green and displays
+login details.</p>
+</li>
+<li>
+<p>Test Case (Wrong password input): <code>change-user-password u/test p/wrongpassword newp/password</code><br>
+Expected: No user password is changed. Error message that username and password may be wrong.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dissociation-of-user-s-address-book"><a class="link" href="#dissociation-of-user-s-address-book">H.3.4. Dissociation of User&#8217;s Address Book</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Checking different users have different address books.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Two existing user (User 1: u: "test" and p: "pass", User 2: u :"test2" and p: "pass2") created.</p>
+</li>
+<li>
+<p>Test Case:<br>
+<code>login u/test p/pass</code><br>
+<code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code><br>
+<code>logout</code><br>
+<code>login u/test2 p/pass2</code><br>
+Expected: In user <code>test2</code> account, the person list panel does not contain <code>John Doe</code>.
+In file path <code>data/</code>, one should observe that each user have their own addressbook data file too. (If data file missing, it means
+no edits have been done to the user&#8217;s AddressBook yet.)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.4. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3738,7 +4103,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">H.5. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3756,6 +4121,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="calendar-tools"><a class="link" href="#calendar-tools">H.6. Calendar Tools</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3975,7 +4343,7 @@ Expected: All error log windows close.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 10:01:16 UTC
+Last updated 2018-04-15 10:15:10 UTC
 </div>
 </div>
 </body>
