@@ -1113,11 +1113,28 @@ possible schemes are AES or CBC.</p>
 <p>The CLI portion of this feature will rely on Google&#8217;s Calendar API that uses the OAuth 2.0 protocol to allow an application (such as SLAP) to directly read/write to a user&#8217;s calendar, provided that they have given them access to the calendar. Once a user has authorized the application to read/write to their calendar, they will gain access to the the following commands: <code>event-add</code>, <code>event-delete</code>, and <code>event-edit</code>. The Oauth authentication process will be entirely handled by Google with the only requirement being that the user must log in to their calendar using the GUI interface.</p>
 </div>
 <div class="paragraph">
-<p>A check will eventually be added to ensure that the user has already logged in before attempting to execute any of the afformentioned commands.</p>
+<p>A check will eventually be added to ensure that the user has already logged in before attempting to execute any of the aforementioned commands.</p>
+</div>
+<div class="paragraph">
+<p>UML Sequence Diagram of Proposed Command Flow For <code>calendar-add</code> Command</p>
+</div>
+<div class="paragraph">
+<p>Every command that requires OAuth (i.e. calendar-add, calendar-delete, calendar-list, show-schedule, and reauthenticate) will follow a similar flow with the potential commision of the parse step depending on the command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/OauthModelDiagram.png" alt="OauthModelDiagram" width="800">
+<img src="images/OauthRevisedSequenceDiagram.png" alt="OauthRevisedSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>UML Activity Diagram of High Level Logic Flow For <code>calendar-add</code> Command</p>
+</div>
+<div class="paragraph">
+<p>Every command that requires OAuth (i.e. calendar-add, calendar-delete, calendar-list, show-schedule, and reauthenticate) will follow a similar flow with the potential commision of the parse step depending on the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OauthRevisedActivityDiagram.png" alt="OauthRevisedActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -4212,6 +4229,33 @@ Expected: System default browser is launched and user is asked to select an acco
 <li>
 <p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
 </li>
+<li>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add</code> and not logged in<br>
+Expected: calendar-add command states that you must be logged in to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add</code> and logged in<br>
+Expected: calendar-add will detect missing parameters and inform the user how to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add title/Some Event</code> and logged in (i.e. missing start/DATETIME and/or end/DATETIME flag)<br>
+Expected: calendar-add will detect missing parameters and inform the user how to use the feature.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add title/Test Event start/ end/</code> and logged in (i.e. missing start/ and/or end/ flag input) + <br>
+Expected: Nothing will happen (no feedback to user&#8201;&#8212;&#8201;will be fixed in v2.0).</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add title/CS2103 Tutorial start/This Thursday at 3PM end/4PM on Thursday</code> and logged in (i.e. missing loc/LOCATION flag)<br>
+Expected: If user does not have a valid Oauth certificate, the system default browser is launched and asks the user to select an account to authorize the SLAP app to manage. Failure to do so will freeze the application. calendar-add command will add event to authorized Google Calendar and show the user the event details with a link to the event.</p>
+</li>
+<li>
+<p>Test case: <code>calendar-add title/CS2103 Tutorial start/This Thursday at 3PM end/4PM on Thursday loc/NUS School of Computing, COM1, 13 Computing Drive, Singapore 117417</code> and logged in<br>
+Expected: If user does not have a valid Oauth certificate, the system default browser is launched and asks the user to select an account to authorize the SLAP app to manage. Failure to do so will freeze the application. calendar-add command will add event to authorized Google Calendar and show the user the event details with a link to the event.</p>
+</li>
 </ol>
 </div>
 </li>
@@ -4543,7 +4587,7 @@ Expected: UI refreshes to not display any events or directions or indicators.<br
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:43:30 UTC
+Last updated 2018-04-15 14:03:14 UTC
 </div>
 </div>
 </body>

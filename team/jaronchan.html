@@ -344,6 +344,81 @@ This will correspond to the valid indexes for <code>navigate INDEX</code>.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="calendar-quick-start"><a class="link" href="#calendar-quick-start">Calendar Quick Start</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../images/calendar-quickstart.png" alt="calendar quickstart" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>This section is meant to be a brief explanation on the various Google Calendar integrations built into the SLAP app.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>WebView versus Command Line Experiences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>WebView Experiences include: <code>switch calendar</code>, <code>calendar-launch</code>, pressing <code>F8</code>, and <code>View &gt; Open Calendar</code></p>
+</li>
+<li>
+<p>Command Line Experiences (i.e. require an OAuth certificate) include: <code>calendar-add</code>, <code>calendar-delete</code>, <code>calendar-list</code>, <code>show-schedule</code>, and reauthenticate</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>How are these features related?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The WebView Experiences and Command Line experiences are <strong>not</strong> linked by default. That is, you can technically log into one Google account within the WebView experience and authorize SLAP to manage a different account via CLI without any issues programatically. The WebView experiences will work as intended, and the command line experiences will work as well, however they will be operating on seperate Google Calendar accounts.</p>
+</li>
+<li>
+<p>The WebView experience is meant to act as a front-end for the CLI operations.</p>
+</li>
+<li>
+<p>Each of the WebViews share the same cookies / cache. You cannot log into one account in one WebView and another account in a different WebView.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>What is OAuth and why is it required?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>OAuth is a secure authorization protocol that allows for the authorization of third party applications to access specific subsets of a user&#8217;s data from a specific service without exposing their password directly to the service requesting the data. For the SLAP app, OAuth is being used to enable communication directly with Google&#8217;s Calendar services to manage a user&#8217;s calendar via API calls, provided that they have authorized the application to do so. This is what enables command line interaction with Google Calendar.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>How can I ensure that both my WebView and Command Line experiences are operating on the same calendar?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>After logging in to the SLAP application, first, execute the <code>switch calendar</code> command and log in with the desired user account in the presented WebView of the Google Calendar web application. Alternatively, you may perform any of the following actions to launch a floating WebView containing the same Google Calendar web application to log in to: execute <code>calendar-launch</code>, <code>View &gt; Open Calendar</code>, press <code>F8</code>.</p>
+</li>
+<li>
+<p>Once you have signed in with the desired Google account inside any of the calendar WebViews, execute the <code>reauthenticate</code> command. Your system browser should launch and ask you to select the account that you wish to authorize the SLAP application to manage. Ensure that you select the same account as the one you have just logged in to within the SLAP app&#8217;s calendar WebViews. <strong>Note that at this point, if you do not authorize an account, the SLAP application will freeze and crash.</strong></p>
+</li>
+<li>
+<p>After successfully selecting an account, you may close your system browser and return to the SLAP app.</p>
+</li>
+<li>
+<p>Congratulations! You have successfully synchronized the two Google Calendar experiences (i.e. WebView and Command Line) within the SLAP app.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
@@ -369,11 +444,6 @@ This will correspond to the valid indexes for <code>navigate INDEX</code>.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="calendar-quick-start"><a class="link" href="#calendar-quick-start">Calendar Quick Start</a></h2>
-<div class="sectionbody">
 <div class="sect2">
 <h3 id="help-guide"><a class="link" href="#help-guide">Help Guide</a></h3>
 <div class="sect3">
@@ -1058,6 +1128,10 @@ Oauth certificate will be checked. If the user has not authorized the SLAP app t
 app will launch their system default browser (i.e. not a WebView) and ask them to select the account that they wish
 to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
+<div class="paragraph">
+<p>If either the start/ and/or end/ flag is not given an input parameter, nothing will happen and no feedback is given
+to the user&#8201;&#8212;&#8201;will be fixed in v2.0).</p>
+</div>
 </td>
 </tr>
 </table>
@@ -1135,7 +1209,8 @@ app will launch their system default browser (i.e. not a WebView) and ask them t
 to grant the SLAP app permission to edit. <strong>Failure to authenticate will cause the program to freeze and crash.</strong></p>
 </div>
 <div class="paragraph">
-<p>If neither the <code>calendar-list</code> nor <code>show-schedule d/DATE</code> have been called previously, the command will do nothing.</p>
+<p>If neither the <code>calendar-list</code> nor <code>show-schedule d/DATE</code> have been called previously, the command will do nothing (and
+will not give any feedback to the user&#8201;&#8212;&#8201;will be fixed in v2.0).</p>
 </div>
 </td>
 </tr>
@@ -2049,7 +2124,7 @@ Expected: UI refreshes to not display any events or directions or indicators.<br
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:43:30 UTC
+Last updated 2018-04-15 14:03:15 UTC
 </div>
 </div>
 </body>
