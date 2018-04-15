@@ -1474,17 +1474,21 @@ The feature supports the display and retrieval of addresses as a marker and of d
 <div class="paragraph">
 <p>Each map is loaded a separately as independent <code>MapPanels</code> with their own <code>MapManager</code>, located in <code>logic</code> folder managing them. Switching out of feature will unload the respective <code>MapPanel</code>, required due to limitations of API used.</p>
 </div>
-<div class="paragraph">
-<p>The feature can create markers to pin beneficiary location on map and also display suggested navigation routes between event locations.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/MapPanelSelectionSequenceDiagram.png" alt="MapPanelSelectionSequenceDiagram" width="800">
+</div>
 </div>
 <div class="paragraph">
-<p>TODO: INSERT FINALISED DIAGRAM HERE</p>
+<p>The above sequence diagram represents the process of loading and setting a new marker on the map panel within Person Details panel.
+The feature can create markers to pin beneficiary location on map and also display suggested navigation routes between event locations.</p>
 </div>
 <div class="paragraph">
-<p>The Map View feature will involve the UI component as while as the Model component.</p>
+<p>As the Map Panel is a UI component, adopting the event-driven approach, we have made it such that the parent of the Map Panel
+listens for the <code>PersonPanelSelectionChangeEvent</code> to signal the child Map Panel to load a load/set a new address on the map.</p>
 </div>
 <div class="paragraph">
-<p>TODO: SECTION INCOMPLETE</p>
+<p>The Google geocoding service helps to translate the string address into a proper Geocode request for Google to process.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1581,19 +1585,20 @@ The feature supports the display and retrieval of addresses as a marker and of d
 <p><code>Daily Scheduler</code> feature involves two separate sections,<code>Events List Display</code> and <code>Navigation</code>. The display portion focuses on retrieving events of the specified date whereas the navigation portion seeks to retrieve suggested routes between those events.</p>
 </div>
 <div class="paragraph">
-<p>TODO: INSERT FINALISED DIAGRAM HERE</p>
+<p>The <code>Daily Scheduler</code> feature will involve the UI component as while as the Model component, and makes use of <code>OAuthManager</code> to get required events.
+The OAuthManager is only used in the parser of the navigate command to retrieve the relevant event pairs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LoadDirectionsSequenceDiagram.png" alt="LoadDirectionsSequenceDiagram" width="800">
+</div>
 </div>
 <div class="paragraph">
-<p>The <code>Daily Scheduler</code> feature will involve the UI component as while as the Model component, and makes use of <code>OAuthManager</code> to get required events.</p>
+<p>The above sequence diagram represents the process of loading and setting new direction markers on the map panel within Daily Scheduler panel.
+This happens after the parsing and doing the execution of <code>navigate</code> command where <code>LoadDirectionsEvent</code> is posted as an event.</p>
 </div>
 <div class="paragraph">
-<p>TODO: SECTION INCOMPLETE</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.2. Design Considerations</a></h4>
-<div class="paragraph">
-<p>TODO: SECTION INCOMPLETE</p>
+<p>The DailySchedulerPanel, being the parent of the directionPanel, listens for the event and will update the map panel accordingly.</p>
 </div>
 </div>
 </div>
@@ -4149,7 +4154,7 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the WebView is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the WebView is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>calendar-launch</code> and not logged in<br>
@@ -4187,7 +4192,7 @@ Expected: All calendar windows close and user is logged out from signed-in calen
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>switch calendar</code> and not logged in<br>
@@ -4209,7 +4214,7 @@ Expected: User is signed out from the calendar scene session (verify by logging 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>reauthenticate</code> and not logged in<br>
@@ -4227,10 +4232,10 @@ Expected: System default browser is launched and user is asked to select an acco
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
-<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>calendar-add</code> and not logged in<br>
@@ -4264,10 +4269,10 @@ Expected: If user does not have a valid Oauth certificate, the system default br
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
-<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>calendar-list</code> and not logged in<br>
@@ -4285,13 +4290,13 @@ Expected: If user does not have a valid Oauth certificate, the system default br
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Prerequisites: List all upcoming events using the <code>calendar-list</code> command or list events for a particular say using <code>show-schedule d/DATE</code>. A non-zero amount of events is required in either case.</p>
 </li>
 <li>
-<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>calendar-delete 1</code> and not logged in<br>
@@ -4325,10 +4330,10 @@ Expected: calendar-delete command will delete an invalid index exception and inf
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Notes: The signed in user within the Calendar scene is not linked to the Oauth certificate. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
-<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuidet.html">UserGuide.adoc</a> for more information.</p>
+<p>Prerequisites: User is logged in and has authenticated SLAP via Oauth. See the Calendar Quick Start in the <a href="UserGuide.html">UserGuide.adoc</a> for more information.</p>
 </li>
 <li>
 <p>Test case: <code>show-schedule d/May 5</code><br>
@@ -4587,7 +4592,7 @@ Expected: UI refreshes to not display any events or directions or indicators.<br
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:03:14 UTC
+Last updated 2018-04-15 14:23:21 UTC
 </div>
 </div>
 </body>
