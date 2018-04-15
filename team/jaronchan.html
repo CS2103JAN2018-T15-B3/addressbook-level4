@@ -137,15 +137,8 @@ UI when logging out of the application. Made the user flow smoother by separatin
 <li>
 <p>Created and added UI mock-up on behalf of team (Pull requests <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/26">#26</a>)</p>
 </li>
-</ul>
-</div>
-</li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>TO UPDATE</strong></p>
+<p>Designed brand logo for SLAP (Pull requests <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/120">#120</a>)</p>
 </li>
 </ul>
 </div>
@@ -155,7 +148,7 @@ UI when logging out of the application. Made the user flow smoother by separatin
 <div class="ulist">
 <ul>
 <li>
-<p><strong>TO UPDATE</strong></p>
+<p>Added first-time user-friendly UI walk through (Pull requests <a href="https://github.com/CS2103JAN2018-T15-B3/main/pull/137">#137</a>)</p>
 </li>
 </ul>
 </div>
@@ -1852,12 +1845,211 @@ The feature supports the display and retrieval of addresses as a marker and of d
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="ui-features-and-map-components"><a class="link" href="#ui-features-and-map-components">UI Features and Map Components</a></h3>
+<div class="sect3">
+<h4 id="switching-features"><a class="link" href="#switching-features">Switching features</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching between feature tabs through Command Line Interface.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Already logged in.<br></p>
+</li>
+<li>
+<p>Test Case: <code>switch scheduler</code><br>
+Expected: UI switches scenes to display daily scheduler feature. Success message shown.<br></p>
+</li>
+<li>
+<p>Test Case (Switch to same feature) : <code>switch scheduler</code><br>
+Expected: No changes to UI. Success message shown.<br></p>
+</li>
+<li>
+<p>Test Case (Wrong name) : <code>switch detail</code><br>
+Expected: No changes to UI. Error message that feature target name is wrong.<br></p>
+</li>
+<li>
+<p>Test Case (Number used) : <code>switch 1</code><br>
+Expected: No changes to UI. Error message that feature target name is wrong.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-persons-will-display-updated-ui"><a class="link" href="#selecting-persons-will-display-updated-ui">Selecting persons will display updated UI</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Updates to Map Panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Already logged in and on <code>Details</code> feature. Person selected has a valid address.<br></p>
+</li>
+<li>
+<p>Test Case: <code>select 1</code><br>
+Expected: UI updates to display first indexed person&#8217;s address on the map.<br></p>
+</li>
+<li>
+<p>Test Case: <code>select 2</code><br>
+Expected: UI updates to display second indexed person&#8217;s address on the map.<br></p>
+</li>
+<li>
+<p>Prerequisites: Added a person with bad address such as <code>a/huhhuh</code>. For this example, imagine person index is 10.<br></p>
+</li>
+<li>
+<p>Test Case (Select person with unrecognisable address) : <code>select 10</code><br>
+Expected: Map Panel updates to show that Google could not retrieve address.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Updates to Session Log Panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Already logged in and on <code>Details</code> feature.<br></p>
+</li>
+<li>
+<p>Test Case: <code>select 1</code><br>
+Expected: UI updates to display first indexed person&#8217;s session log.</p>
+</li>
+<li>
+<p>Test Case: <code>select 2</code><br>
+Expected: UI updates to display second indexed person&#8217;s session log.</p>
+</li>
+<li>
+<p>Test Case: <code>add-log 1 log/TEST</code><br>
+Expected: Selects first indexed person and updates UI to display that person&#8217;s details including session log.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-schedule-updates-list-of-scheduled-events-shown"><a class="link" href="#show-schedule-updates-list-of-scheduled-events-shown">Show-schedule updates list of scheduled events shown</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Updates to Events List Shown.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Already logged in and on <code>Scheduler</code> feature. Date chosen, eg. 5 May and 6 May, already have at least 1 event scheduled.<br></p>
+</li>
+<li>
+<p>Test Case: <code>show-schedule d/5 May</code><br>
+Expected: UI updates to show information of events scheduled on 5 May.<br></p>
+</li>
+<li>
+<p>Test Case (Select different date with valid number of events): <code>show-schedule d/6 May</code><br>
+Expected: UI updates to show information of events scheduled on 6 May.<br></p>
+</li>
+<li>
+<p>Prerequisites: Date, eg. 7 May chosen has no scheduled events planned.<br></p>
+</li>
+<li>
+<p>Test Case (Select different date with no events): <code>show-schedule d/7 May</code><br>
+Expected: UI updates to show prompt informing user to add events or select a date with events.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Updates to Navigation Option Indicators</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Date chosen, eg. 8 May have at 5 events scheduled.<br></p>
+</li>
+<li>
+<p>Test Case: <code>show-schedule d/8 May</code><br>
+Expected: UI updates to display to show 4 buttons next to map panel.<br></p>
+</li>
+<li>
+<p>Prerequisites: Date chosen, eg. 9 May only have 1 event scheduled.<br></p>
+</li>
+<li>
+<p>Test Case (Not enough events): <code>show-schedule d/9 May</code><br>
+Expected: UI updates to not display any buttons.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-command-updates-daily-scheduler-map-panel"><a class="link" href="#navigate-command-updates-daily-scheduler-map-panel">Navigate command updates Daily Scheduler Map Panel</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Updates to Daily Scheduler Map Panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Already called show-schedule for a date with sufficient events, i.e. 2 or more events.<br></p>
+</li>
+<li>
+<p>Test Case: <code>navigate 1</code><br>
+Expected: UI refreshes to display directions between event 1 and 2. Message success will be shown.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ui-updates-on-log-out-and-log-in"><a class="link" href="#ui-updates-on-log-out-and-log-in">UI updates on Log Out and Log In</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Updates to Details Panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Logged in, carried out a few commands and current view is details feature.<br></p>
+</li>
+<li>
+<p>Test Case: <code>logout + login u/user p/pass</code><br>
+Expected: UI refreshes to not display any persons details.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Updates to Daily Scheduler Panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Logged in, carried out a few commands and current view is daily scheduler feature.<br></p>
+</li>
+<li>
+<p>Test Case: <code>logout + login u/user p/pass</code><br>
+Expected: UI refreshes to not display any events or directions or indicators.<br></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 11:04:28 UTC
+Last updated 2018-04-15 12:43:30 UTC
 </div>
 </div>
 </body>
